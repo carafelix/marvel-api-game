@@ -3,7 +3,8 @@ import {
 	OpenAPIRouteSchema,
 	Query,
 } from "@cloudflare/itty-router-openapi";
-import { Character } from "../types";
+import { z } from "zod";
+import { Character } from "../schemas";
 import characters from './json/characters.json' assert {type: 'json'}
 
 const MAX_RESULTS = 25
@@ -12,7 +13,7 @@ export class CharacterList extends OpenAPIRoute {
 		tags: ["Characters"],
 		summary: "List Characters",
 		parameters: {
-			limit: Query(Number, {
+			limit: Query(z.number(), {
 				description: "Number of results (Max 25)",
 				default: 10,
 			}),

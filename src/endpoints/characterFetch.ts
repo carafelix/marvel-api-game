@@ -3,7 +3,8 @@ import {
 	OpenAPIRouteSchema,
 	Path,
 } from "@cloudflare/itty-router-openapi";
-import { Character } from "../types";
+import { z } from "zod";
+import { Character } from "../schemas";
 import characters from './json/characters.json'
 
 export class CharacterFetch extends OpenAPIRoute {
@@ -11,7 +12,7 @@ export class CharacterFetch extends OpenAPIRoute {
 		tags: ["Characters"],
 		summary: "Get a single Character by name",
 		parameters: {
-			characterName: Path(String, {
+			characterName: Path(z.string(), {
 				description: "Character name",
 			}),
 		},
