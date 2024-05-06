@@ -24,10 +24,16 @@ export const CharacterSchema = z.object({
   type: z.enum(['hero', 'villain'])
 })
 
+export const FighterSchema = z.object({
+  charID: z.number(),
+  as: z.number(),
+  hp: z.number()
+})
+
 export const CharactersSchema = z.array(CharacterSchema);
 
 export type Character = z.TypeOf<typeof CharacterSchema>;
 export type CharacterS = z.TypeOf<typeof CharacterSchema>;
 export type Sprite = z.TypeOf<typeof SpriteSchema>;
-export type Stats = z.TypeOf<typeof StatsSchema>;
+export type CharStats = z.TypeOf<typeof StatsSchema>;
 

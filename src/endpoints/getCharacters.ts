@@ -4,7 +4,7 @@ import {
 	Query,
 } from "@cloudflare/itty-router-openapi";
 import { z } from "zod";
-import { CharacterSchema } from "../schemas";
+import { CharacterS, CharacterSchema, CharactersSchema } from "../schemas";
 import characters from './json/characters.json' assert {type: 'json'}
 
 const MAX_RESULTS = 25
@@ -55,10 +55,12 @@ export class CharacterList extends OpenAPIRoute {
 				}
 			)
 		};
-		const charactersResult = []
+		const charactersResult : CharacterS[]= []
 		while (limit) {
 			const i = Math.floor(Math.random() * charactersCopy.length)
-			charactersResult.push(...charactersCopy.splice(i, 1))
+			// should add safeParsing if changing to fetch
+			const current = CharactersSchema.parse(charactersCopy.splice(i, 1))
+			charactersResult.push(...current)
 			--limit
 		}
 		return {

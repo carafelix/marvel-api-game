@@ -15,10 +15,9 @@
 		"pretty": true,
 		"resolveJsonModule": true,
 		"rootDir": ".",
-		"skipLibCheck": true,
-		"strict": false,
 		"traceResolution": false,
-		"outDir": "",
+		"strictNullChecks": true,
+		"outDir": "dist",
 		"target": "esnext",
 		"module": "esnext",
 		"types": [

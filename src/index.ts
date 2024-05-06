@@ -1,13 +1,19 @@
-import { OpenAPIRouter } from "@cloudflare/itty-router-openapi";
-import { CharacterFetch } from "./endpoints/characterFetch";
-import { CharacterList } from "./endpoints/characterList";
+import { OpenAPIRouter} from "@cloudflare/itty-router-openapi";
+import { getOneCharacter, getCharacters } from "./endpoints/routes";
 
 const router = OpenAPIRouter({
-	docs_url: "/",
+	docs_url: "/docs",
+	redoc_url: "/"
 });
 
-router.get("/api/characters/", CharacterList);
-router.get("/api/characters/:characterName/", CharacterFetch);
+router.get("/api/characters/", getCharacters);
+router.get("/api/characters/:characterName/", getOneCharacter);
+
+router.get("api/fighters/getOne", )
+router.get("api/fighters/getMany", )
+router.get("api/team/getOne", )
+router.get("api/game/fightRound", )
+
 
 // 404 for everything else
 router.all("*", () =>

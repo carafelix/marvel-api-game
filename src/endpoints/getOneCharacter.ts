@@ -40,7 +40,6 @@ export class CharacterFetch extends OpenAPIRoute {
 		request: Request,
 		data: Record<string, any>
 	) {
-
 		const { characterName } = await data.params;
 		const searchedCharacter = characters.find(({name: searchedName}) => 
 			characterName.toUpperCase() === searchedName.toUpperCase()
