@@ -17,7 +17,16 @@
         "title": "Absorbing Man",
         "src": "http://scrollboss.illmosis.net/comicedits/absorbingman-capfgt_stand2001.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 2,
+      "strength": 8,
+      "speed": 3,
+      "durability": 9,
+      "power": 8,
+      "combat": 7
+    },
+    "type": "villain"
   },
   {
     "id": 1009165,
@@ -33,7 +42,16 @@
         "title": "the Avengers: 2001 (base: all from Capcom games) Founding five members",
         "src": "http://scrollboss.illmosis.net/comicedits/spritegroup_avengers_team1.gif"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 7,
+      "strength": 9,
+      "speed": 7,
+      "durability": 8,
+      "power": 8,
+      "combat": 8
+    },
+    "type": "hero"
   },
   {
     "id": 1009172,
@@ -49,7 +67,16 @@
         "title": "Batroc the Leaper: (base: Cyclops)",
         "src": "http://scrollboss.illmosis.net/comicedits/sprite_batroc_stand.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 4,
+      "strength": 3,
+      "speed": 6,
+      "durability": 3,
+      "power": 2,
+      "combat": 7
+    },
+    "type": "villain"
   },
   {
     "id": 1009175,
@@ -65,7 +92,16 @@
         "title": "Beast: (bases: Blanka, Zangief)",
         "src": "http://scrollboss.illmosis.net/comicedits/beast_xmen1lee.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 9,
+      "strength": 4,
+      "speed": 6,
+      "durability": 4,
+      "power": 3,
+      "combat": 5
+    },
+    "type": "hero"
   },
   {
     "id": 1009185,
@@ -77,7 +113,16 @@
         "title": "Black Cat",
         "src": "http://scrollboss.illmosis.net/comicedits/blackcat-marvel-fgtsze_classic_fgtstance-sm91.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 6,
+      "strength": 3,
+      "speed": 5,
+      "durability": 3,
+      "power": 2,
+      "combat": 6
+    },
+    "type": "hero"
   },
   {
     "id": 1009187,
@@ -133,7 +178,16 @@
         "title": "Black Panther",
         "src": "http://scrollboss.illmosis.net/comicedits/blackpanther-capbased_maskon.gif"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 8,
+      "strength": 4,
+      "speed": 6,
+      "durability": 4,
+      "power": 3,
+      "combat": 9
+    },
+    "type": "hero"
   },
   {
     "id": 1009189,
@@ -177,7 +231,16 @@
         "title": "Black Widow",
         "src": "http://scrollboss.illmosis.net/comicedits/blackwidow-psybased_2004stand.gif"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 7,
+      "strength": 3,
+      "speed": 6,
+      "durability": 4,
+      "power": 2,
+      "combat": 8
+    },
+    "type": "hero"
   },
   {
     "id": 1010371,
@@ -193,7 +256,16 @@
         "title": "Boomerang: 2014) Uncanny X-Men (NES)",
         "src": "http://scrollboss.illmosis.net/comicedits/boomerang-fgtsze_NES_fstand.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 5,
+      "strength": 3,
+      "speed": 5,
+      "durability": 3,
+      "power": 2,
+      "combat": 6
+    },
+    "type": "villain"
   },
   {
     "id": 1009220,
@@ -221,7 +293,16 @@
         "title": "Captain America: 2017, 2012 MSH Capcom edit, pose based on Avengers #16 cover by Jack Kirby",
         "src": "http://scrollboss.illmosis.net/comicedits/captam-capfgt_avengers16cover.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 7,
+      "strength": 4,
+      "speed": 5,
+      "durability": 4,
+      "power": 3,
+      "combat": 9
+    },
+    "type": "hero"
   },
   {
     "id": 1009243,
@@ -237,7 +318,16 @@
         "title": "Colossus: (base: Colossus) NES X-Men",
         "src": "http://scrollboss.illmosis.net/comicedits/colossus-capfgt_nes_calmwin.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 4,
+      "strength": 9,
+      "speed": 3,
+      "durability": 9,
+      "power": 5,
+      "combat": 7
+    },
+    "type": "hero"
   },
   {
     "id": 1009252,
@@ -261,7 +351,16 @@
         "title": "Crossbones: (base: ?)",
         "src": "http://scrollboss.illmosis.net/comicedits/crossbones_grngear_stand.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 5,
+      "strength": 4,
+      "speed": 4,
+      "durability": 6,
+      "power": 2,
+      "combat": 7
+    },
+    "type": "villain"
   },
   {
     "id": 1009257,
@@ -285,7 +384,16 @@
         "title": "Cyclops: (base: Cyclops) Jim Lee X-Men #1 tribute",
         "src": "http://scrollboss.illmosis.net/comicedits/cyclops-capfgt_xmen1lee.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 7,
+      "strength": 3,
+      "speed": 4,
+      "durability": 4,
+      "power": 7,
+      "combat": 7
+    },
+    "type": "hero"
   },
   {
     "id": 1009262,
@@ -317,7 +425,16 @@
         "title": "Daredevil: 2018, fight stance 1",
         "src": "http://scrollboss.illmosis.net/comicedits/daredevil-fgtsze_red_stance1-1club.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 7,
+      "strength": 3,
+      "speed": 7,
+      "durability": 4,
+      "power": 2,
+      "combat": 9
+    },
+    "type": "hero"
   },
   {
     "id": 1009267,
@@ -333,7 +450,16 @@
         "title": "Dazzler: 2016, Konami arcade fight stance",
         "src": "http://scrollboss.illmosis.net/comicedits/dazzler-fgtsze_potx_konamiarcadestance.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 5,
+      "strength": 3,
+      "speed": 4,
+      "durability": 3,
+      "power": 7,
+      "combat": 5
+    },
+    "type": "hero"
   },
   {
     "id": 1009268,
@@ -357,7 +483,16 @@
         "title": "Deadpool: (base: Cyclops) Dan Hibiki imitation",
         "src": "http://scrollboss.illmosis.net/comicedits/deadpool_dantastic.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 6,
+      "strength": 4,
+      "speed": 7,
+      "durability": 9,
+      "power": 5,
+      "combat": 9
+    },
+    "type": "hero"
   },
   {
     "id": 1009281,
@@ -373,7 +508,16 @@
         "title": "Doctor Doom",
         "src": "http://scrollboss.illmosis.net/comicedits/doctordoom-capfgt_edit_teleporttest.gif"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 10,
+      "strength": 4,
+      "speed": 4,
+      "durability": 7,
+      "power": 10,
+      "combat": 7
+    },
+    "type": "villain"
   },
   {
     "id": 1009306,
@@ -389,7 +533,16 @@
         "title": "Firestar: (base: Storm)",
         "src": "http://scrollboss.illmosis.net/comicedits/firestar_hover1.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 6,
+      "strength": 4,
+      "speed": 6,
+      "durability": 5,
+      "power": 7,
+      "combat": 6
+    },
+    "type": "hero"
   },
   {
     "id": 1009328,
@@ -405,7 +558,16 @@
         "title": "Grim Reaper: 2011 (base: Cyclops)",
         "src": "http://scrollboss.illmosis.net/comicedits/grimreaper-marvel-capfgt_stand-caatapose_faceleft.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 6,
+      "strength": 4,
+      "speed": 3,
+      "durability": 4,
+      "power": 3,
+      "combat": 6
+    },
+    "type": "villain"
   },
   {
     "id": 1010743,
@@ -425,7 +587,16 @@
         "title": "Groot: after Tales to Astonish 13, page 1 by Jack Kirby",
         "src": "http://scrollboss.illmosis.net/comicedits/groot-fgtsze_bigbare_tta13p1.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 4,
+      "strength": 9,
+      "speed": 3,
+      "durability": 8,
+      "power": 7,
+      "combat": 6
+    },
+    "type": "hero"
   },
   {
     "id": 1009337,
@@ -441,7 +612,16 @@
         "title": "Havok: (base: Cyclops)",
         "src": "http://scrollboss.illmosis.net/comicedits/havok_v1_stand_powered.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 6,
+      "strength": 3,
+      "speed": 5,
+      "durability": 5,
+      "power": 8,
+      "combat": 7
+    },
+    "type": "hero"
   },
   {
     "id": 1009338,
@@ -481,7 +661,16 @@
         "title": "Hawkeye: (base: Capt. Am) Avengers 189 cover pose",
         "src": "http://scrollboss.illmosis.net/comicedits/hawkeye-capfgt_avengers189.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 6,
+      "strength": 3,
+      "speed": 5,
+      "durability": 4,
+      "power": 2,
+      "combat": 9
+    },
+    "type": "hero"
   },
   {
     "id": 1009356,
@@ -513,7 +702,16 @@
         "title": "Human Torch: 2002",
         "src": "http://scrollboss.illmosis.net/comicedits/humantorch-capfgt_armsup01_2002.gif"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 5,
+      "strength": 4,
+      "speed": 7,
+      "durability": 4,
+      "power": 8,
+      "combat": 6
+    },
+    "type": "hero"
   },
   {
     "id": 1009368,
@@ -605,7 +803,16 @@
         "title": "Iron Man",
         "src": "http://scrollboss.illmosis.net/comicedits/ironman-capfgt_supertech-mvsc3.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 10,
+      "strength": 4,
+      "speed": 5,
+      "durability": 6,
+      "power": 8,
+      "combat": 7
+    },
+    "type": "hero"
   },
   {
     "id": 1009390,
@@ -621,7 +828,16 @@
         "title": "Klaw: (base: Cyclops)",
         "src": "http://scrollboss.illmosis.net/comicedits/klaw_attack1-faceleft.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 7,
+      "strength": 3,
+      "speed": 3,
+      "durability": 4,
+      "power": 7,
+      "combat": 6
+    },
+    "type": "villain"
   },
   {
     "id": 1011444,
@@ -637,7 +853,16 @@
         "title": "Living Laser: 2006, (base: Capcom MSH Captain America)",
         "src": "http://scrollboss.illmosis.net/comicedits/livinglaser_stand.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 6,
+      "strength": 3,
+      "speed": 6,
+      "durability": 4,
+      "power": 8,
+      "combat": 5
+    },
+    "type": "villain"
   },
   {
     "id": 1009407,
@@ -653,7 +878,16 @@
         "title": "Loki: 2012 (from scratch) classic",
         "src": "http://scrollboss.illmosis.net/comicedits/loki-capfgt_classic_armsfolded-sneer.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 9,
+      "strength": 4,
+      "speed": 3,
+      "durability": 7,
+      "power": 9,
+      "combat": 7
+    },
+    "type": "villain"
   },
   {
     "id": 1010682,
@@ -677,7 +911,16 @@
         "title": "Misty Knight: 2016, 70s-80s",
         "src": "http://scrollboss.illmosis.net/comicedits/mistyknight-fgtsze_classic_blk-blk_pistolready1.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 6,
+      "strength": 3,
+      "speed": 4,
+      "durability": 3,
+      "power": 3,
+      "combat": 8
+    },
+    "type": "hero"
   },
   {
     "id": 1009459,
@@ -697,7 +940,16 @@
         "title": "Mr. Fantastic: 2010",
         "src": "http://scrollboss.illmosis.net/comicedits/mrfantastic_classic_thinking.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 10,
+      "strength": 3,
+      "speed": 3,
+      "durability": 6,
+      "power": 3,
+      "combat": 4
+    },
+    "type": "hero"
   },
   {
     "id": 1009466,
@@ -713,7 +965,16 @@
         "title": "Namor the Sub-Mariner: (base:SF3 Urien)",
         "src": "http://scrollboss.illmosis.net/comicedits/namor-capfgt_trunks_fistraise.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 6,
+      "strength": 9,
+      "speed": 6,
+      "durability": 8,
+      "power": 5,
+      "combat": 8
+    },
+    "type": "hero"
   },
   {
     "id": 1009471,
@@ -749,7 +1010,16 @@
         "title": "Nick Fury: (base:Cable)",
         "src": "http://scrollboss.illmosis.net/comicedits/nickfury-capfgt_emh1_pose1.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 8,
+      "strength": 3,
+      "speed": 5,
+      "durability": 3,
+      "power": 3,
+      "combat": 9
+    },
+    "type": "hero"
   },
   {
     "id": 1009472,
@@ -769,7 +1039,16 @@
         "title": "Nightcrawler: 2020, original outfit, teleport",
         "src": "http://scrollboss.illmosis.net/comicedits/nightcrawler-fgtsze_classic_teleport1.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 6,
+      "strength": 3,
+      "speed": 8,
+      "durability": 3,
+      "power": 2,
+      "combat": 8
+    },
+    "type": "hero"
   },
   {
     "id": 1011124,
@@ -785,7 +1064,16 @@
         "title": "Nightshade: 2018, 00s",
         "src": "http://scrollboss.illmosis.net/comicedits/nightshade-marvel-fgtsze_2ks_taunt1.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 7,
+      "strength": 2,
+      "speed": 3,
+      "durability": 3,
+      "power": 3,
+      "combat": 4
+    },
+    "type": "villain"
   },
   {
     "id": 1009512,
@@ -805,7 +1093,16 @@
         "title": "Psylocke",
         "src": "http://scrollboss.illmosis.net/comicedits/psylocke_xmen1lee.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 7,
+      "strength": 4,
+      "speed": 6,
+      "durability": 4,
+      "power": 7,
+      "combat": 9
+    },
+    "type": "hero"
   },
   {
     "id": 1009524,
@@ -821,7 +1118,16 @@
         "title": "Quicksilver: (from scratch)",
         "src": "http://scrollboss.illmosis.net/comicedits/quicksilver-capfgt_classic-v1-green_wait.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 5,
+      "strength": 3,
+      "speed": 10,
+      "durability": 3,
+      "power": 2,
+      "combat": 6
+    },
+    "type": "hero"
   },
   {
     "id": 1009546,
@@ -837,7 +1143,16 @@
         "title": "Rogue: (base: Rogue XMvsSF) X-Men #1 cover, after Jim Lee",
         "src": "http://scrollboss.illmosis.net/comicedits/rogue_xmen1lee.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 6,
+      "strength": 9,
+      "speed": 6,
+      "durability": 7,
+      "power": 8,
+      "combat": 7
+    },
+    "type": "hero"
   },
   {
     "id": 1009562,
@@ -877,7 +1192,16 @@
         "title": "Scarlet Witch: (base: Chun-Li SFA)",
         "src": "http://scrollboss.illmosis.net/comicedits/scarletwitch-capfgt_pose01.gif"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 6,
+      "strength": 2,
+      "speed": 3,
+      "durability": 4,
+      "power": 10,
+      "combat": 5
+    },
+    "type": "hero"
   },
   {
     "id": 1009570,
@@ -909,7 +1233,16 @@
         "title": "Sentinel: Mk. V mini (Konami arcade), Konami arcade stance",
         "src": "http://scrollboss.illmosis.net/comicedits/sentinel-marvel-fgtsze_mkvmini_gold_stand-konarc.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 5,
+      "strength": 10,
+      "speed": 3,
+      "durability": 9,
+      "power": 9,
+      "combat": 5
+    },
+    "type": "villain"
   },
   {
     "id": 1009592,
@@ -925,7 +1258,16 @@
         "title": "Silver Surfer: 2017",
         "src": "http://scrollboss.illmosis.net/comicedits/silversurfer-fgtsze_surf-3oclock-1.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 7,
+      "strength": 9,
+      "speed": 10,
+      "durability": 10,
+      "power": 10,
+      "combat": 7
+    },
+    "type": "hero"
   },
   {
     "id": 1009629,
@@ -985,7 +1327,16 @@
         "title": "Storm: (base: Storm) X-Men #1 tribute",
         "src": "http://scrollboss.illmosis.net/comicedits/storm_xmen1lee.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 7,
+      "strength": 4,
+      "speed": 6,
+      "durability": 5,
+      "power": 9,
+      "combat": 8
+    },
+    "type": "hero"
   },
   {
     "id": 1009639,
@@ -1017,7 +1368,16 @@
         "title": "Super-Skrull",
         "src": "http://scrollboss.illmosis.net/comicedits/superskrull-fgtsze_classic_pose1_all4-v1.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 6,
+      "strength": 8,
+      "speed": 4,
+      "durability": 8,
+      "power": 8,
+      "combat": 7
+    },
+    "type": "villain"
   },
   {
     "id": 1009648,
@@ -1037,7 +1397,16 @@
         "title": "the Taskmaster: (base: Capt. Am)",
         "src": "http://scrollboss.illmosis.net/comicedits/taskmaster-capfgt_swordthreat.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 7,
+      "strength": 3,
+      "speed": 5,
+      "durability": 3,
+      "power": 3,
+      "combat": 9
+    },
+    "type": "villain"
   },
   {
     "id": 1009685,
@@ -1057,7 +1426,16 @@
         "title": "Ultron",
         "src": "http://scrollboss.illmosis.net/comicedits/ultron-fgtsze_80s_mu88gammill_headforward.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 9,
+      "strength": 10,
+      "speed": 7,
+      "durability": 10,
+      "power": 10,
+      "combat": 9
+    },
+    "type": "villain"
   },
   {
     "id": 1009697,
@@ -1089,7 +1467,16 @@
         "title": "the Vision: (base: Cyclops) West Coast Avengers 45, head 2",
         "src": "http://scrollboss.illmosis.net/comicedits/vision-capfgt_1989_av57pose.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 9,
+      "strength": 8,
+      "speed": 7,
+      "durability": 8,
+      "power": 8,
+      "combat": 8
+    },
+    "type": "hero"
   },
   {
     "id": 1009707,
@@ -1129,7 +1516,16 @@
         "title": "Wasp",
         "src": "http://scrollboss.illmosis.net/comicedits/wasp-capfgt_emh_stingthreat-lit.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 7,
+      "strength": 2,
+      "speed": 5,
+      "durability": 3,
+      "power": 4,
+      "combat": 6
+    },
+    "type": "hero"
   },
   {
     "id": 1010348,
@@ -1153,7 +1549,16 @@
         "title": "Whirlwind",
         "src": "http://scrollboss.illmosis.net/comicedits/whirlwind-capfgt_grn-bare_stand-money.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 4,
+      "strength": 4,
+      "speed": 7,
+      "durability": 5,
+      "power": 4,
+      "combat": 6
+    },
+    "type": "villain"
   },
   {
     "id": 1009718,
@@ -1189,7 +1594,16 @@
         "title": "Wolverine",
         "src": "http://scrollboss.illmosis.net/comicedits/wolverine_orn-brn_leap.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 6,
+      "strength": 5,
+      "speed": 5,
+      "durability": 9,
+      "power": 3,
+      "combat": 10
+    },
+    "type": "hero"
   },
   {
     "id": 1009719,
@@ -1205,7 +1619,16 @@
         "title": "Wonder Man: scratch-made 2015, Avengers #9 cover pose",
         "src": "http://scrollboss.illmosis.net/comicedits/wonderman-fgtsze_v1_avengers9cover_sideslight.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 5,
+      "strength": 10,
+      "speed": 7,
+      "durability": 9,
+      "power": 7,
+      "combat": 7
+    },
+    "type": "hero"
   },
   {
     "id": 1009722,
@@ -1221,7 +1644,16 @@
         "title": "X-23: edit (base: Marrow?)",
         "src": "http://scrollboss.illmosis.net/comicedits/x23-capfgt_mvsc3_stand1-v1.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 5,
+      "strength": 5,
+      "speed": 6,
+      "durability": 6,
+      "power": 3,
+      "combat": 9
+    },
+    "type": "hero"
   },
   {
     "id": 1009726,
@@ -1241,6 +1673,15 @@
         "title": "Jim Lee's X-Men #1 - Click to see full-size",
         "src": "http://scrollboss.illmosis.net/comicedits/xmen_jimleexmen1_sunset_2007edits_75percent.png"
       }
-    ]
+    ],
+    "stats": {
+      "intelligence": 7,
+      "strength": 7,
+      "speed": 6,
+      "durability": 7,
+      "power": 7,
+      "combat": 7
+    },
+    "type": "hero"
   }
 ]

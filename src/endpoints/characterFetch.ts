@@ -6,7 +6,7 @@ import {
 import { Character } from "../types";
 import characters from './json/characters.json'
 
-export class TaskFetch extends OpenAPIRoute {
+export class CharacterFetch extends OpenAPIRoute {
 	static schema: OpenAPIRouteSchema = {
 		tags: ["Characters"],
 		summary: "Get a single Character by name",
@@ -41,15 +41,10 @@ export class TaskFetch extends OpenAPIRoute {
 		context: any,
 		data: Record<string, any>
 	) {
-		// Retrieve the validated slug
 		const { characterName } = data.params;
-		
-		
-
 		const searchedCharacter = characters.find(({name: searchedName}) => 
 			characterName === searchedName
 		)
-		
 		if (!searchedCharacter) {
 			return Response.json(
 				{
@@ -61,7 +56,6 @@ export class TaskFetch extends OpenAPIRoute {
 				}
 			);
 		}
-
 		return {
 			success: true,
 			character: searchedCharacter

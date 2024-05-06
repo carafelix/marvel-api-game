@@ -1,13 +1,13 @@
 import { OpenAPIRouter } from "@cloudflare/itty-router-openapi";
-import { TaskFetch } from "./endpoints/characterFetch";
-import { TaskList } from "./endpoints/characterList";
+import { CharacterFetch } from "./endpoints/characterFetch";
+import { CharacterList } from "./endpoints/characterList";
 
 export const router = OpenAPIRouter({
 	docs_url: "/",
 });
 
-router.get("/api/characters/", TaskList);
-router.get("/api/characters/:characterName/", TaskFetch);
+router.get("/api/characters/", CharacterList);
+router.get("/api/characters/:characterName/", CharacterFetch);
 
 // 404 for everything else
 router.all("*", () =>

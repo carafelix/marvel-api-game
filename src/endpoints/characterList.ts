@@ -7,7 +7,7 @@ import { Character } from "../types";
 import characters from './json/characters.json' assert {type: 'json'}
 
 const MAX_RESULTS = 25
-export class TaskList extends OpenAPIRoute {
+export class CharacterList extends OpenAPIRoute {
 	static schema: OpenAPIRouteSchema = {
 		tags: ["Characters"],
 		summary: "List Characters",
@@ -19,7 +19,7 @@ export class TaskList extends OpenAPIRoute {
 		},
 		responses: {
 			"200": {
-				description: "Returns a list of characters",
+				description: "Returns a list of random characters",
 				schema: {
 					success: Boolean,
 					result: {
@@ -56,14 +56,12 @@ export class TaskList extends OpenAPIRoute {
 				}
 			)
 		};
-
 		const charactersResult = []
 		while (limit) {
 			const i = Math.floor(Math.random() * charactersCopy.length)
 			charactersResult.push(...charactersCopy.splice(i, 1))
 			--limit
 		}
-
 		return {
 			success: true,
 			characters: charactersResult,
