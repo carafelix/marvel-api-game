@@ -4,7 +4,7 @@ import {
 	Path,
 } from "@cloudflare/itty-router-openapi";
 import { z } from "zod";
-import { Character } from "../schemas";
+import { CharacterSchema } from "../schemas";
 import characters from './json/characters.json'
 
 export class CharacterFetch extends OpenAPIRoute {
@@ -22,7 +22,7 @@ export class CharacterFetch extends OpenAPIRoute {
 				schema: {
 					success: Boolean,
 					result: {
-						character: Character,
+						character: CharacterSchema,
 					},
 				},
 			},

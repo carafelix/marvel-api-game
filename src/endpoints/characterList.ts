@@ -4,7 +4,7 @@ import {
 	Query,
 } from "@cloudflare/itty-router-openapi";
 import { z } from "zod";
-import { Character } from "../schemas";
+import { CharacterSchema } from "../schemas";
 import characters from './json/characters.json' assert {type: 'json'}
 
 const MAX_RESULTS = 25
@@ -24,7 +24,7 @@ export class CharacterList extends OpenAPIRoute {
 				schema: {
 					success: Boolean,
 					result: {
-						characters: [Character],
+						characters: [CharacterSchema],
 					},
 				},
 			},

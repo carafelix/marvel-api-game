@@ -1,7 +1,6 @@
 import { OpenAPIRouter } from "@cloudflare/itty-router-openapi";
 import { CharacterFetch } from "./endpoints/characterFetch";
 import { CharacterList } from "./endpoints/characterList";
-import { Env } from "types";
 
 const router = OpenAPIRouter({
 	docs_url: "/",
