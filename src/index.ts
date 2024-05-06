@@ -21,8 +21,6 @@ router.all("*", () =>
 	)
 );
 
-router.handle
-
 export default {
 	async fetch(request: Request, env: Env) {
 		const { success } = await env.MY_RATE_LIMITER.limit({ key: '/*' })
