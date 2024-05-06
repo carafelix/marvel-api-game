@@ -13,7 +13,7 @@ export class CharacterList extends OpenAPIRoute {
 		tags: ["Characters"],
 		summary: "List Characters",
 		parameters: {
-			limit: Query(z.number(), {
+			limit: Query(Number, {
 				description: "Number of results (Max 25)",
 				default: 10,
 			}),
@@ -43,6 +43,7 @@ export class CharacterList extends OpenAPIRoute {
 	) {
 		const charactersCopy = characters.slice()
 		let limit = await data.query.limit
+		
 		if (limit > MAX_RESULTS) {
 			return Response.json(
 				{
