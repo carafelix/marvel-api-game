@@ -3,29 +3,30 @@ import {
 	OpenAPIRouteSchema,
 	Path,
 } from "@cloudflare/itty-router-openapi";
-import { Task } from "../types";
+import { Character } from "../types";
+import characters from './json/characters.json'
 
 export class TaskFetch extends OpenAPIRoute {
 	static schema: OpenAPIRouteSchema = {
-		tags: ["Tasks"],
-		summary: "Get a single Task by slug",
+		tags: ["Characters"],
+		summary: "Get a single Character by name",
 		parameters: {
-			taskSlug: Path(String, {
-				description: "Task slug",
+			characterName: Path(String, {
+				description: "Character name",
 			}),
 		},
 		responses: {
 			"200": {
-				description: "Returns a single task if found",
+				description: "Returns a single Character if found",
 				schema: {
 					success: Boolean,
 					result: {
-						task: Task,
+						character: Character,
 					},
 				},
 			},
 			"404": {
-				description: "Task not found",
+				description: "Character not found",
 				schema: {
 					success: Boolean,
 					error: String,
@@ -41,18 +42,19 @@ export class TaskFetch extends OpenAPIRoute {
 		data: Record<string, any>
 	) {
 		// Retrieve the validated slug
-		const { taskSlug } = data.params;
+		const { characterName } = data.params;
+		
+		
 
-		// Implement your own object fetch here
-
-		const exists = true;
-
-		// @ts-ignore: check if the object exists
-		if (exists === false) {
+		const searchedCharacter = characters.find(({name: searchedName}) => 
+			characterName === searchedName
+		)
+		
+		if (!searchedCharacter) {
 			return Response.json(
 				{
 					success: false,
-					error: "Object not found",
+					error: "Character not found",
 				},
 				{
 					status: 404,
@@ -62,13 +64,7 @@ export class TaskFetch extends OpenAPIRoute {
 
 		return {
 			success: true,
-			task: {
-				name: "my task",
-				slug: taskSlug,
-				description: "this needs to be done",
-				completed: false,
-				due_date: new Date().toISOString().slice(0, 10),
-			},
+			character: searchedCharacter
 		};
 	}
 }
