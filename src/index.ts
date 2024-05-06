@@ -1,8 +1,9 @@
 import { OpenAPIRouter } from "@cloudflare/itty-router-openapi";
 import { CharacterFetch } from "./endpoints/characterFetch";
 import { CharacterList } from "./endpoints/characterList";
+import { Env } from "types";
 
-export const router = OpenAPIRouter({
+const router = OpenAPIRouter({
 	docs_url: "/",
 });
 
@@ -20,6 +21,14 @@ router.all("*", () =>
 	)
 );
 
+router.handle
+
 export default {
-	fetch: router.handle,
+	async fetch(request: Request, env: Env) {
+		const { success } = await env.MY_RATE_LIMITER.limit({ key: '/*' })
+		if (!success) {
+			return new Response(`429 Failure: rate limit exceeded for /*`, { status: 429 })
+		}
+		return await router.handle(request)
+	}
 };

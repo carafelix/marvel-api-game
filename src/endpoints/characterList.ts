@@ -36,15 +36,12 @@ export class CharacterList extends OpenAPIRoute {
 			}
 		},
 	};
-
 	async handle(
 		request: Request,
-		env: any,
-		context: any,
 		data: Record<string, any>
 	) {
 		const charactersCopy = characters.slice()
-		let limit = data.query.limit
+		let limit = await data.query.limit
 		if (limit > MAX_RESULTS) {
 			return Response.json(
 				{
