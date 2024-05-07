@@ -1,5 +1,6 @@
 import {
     Arr,
+    DataOf,
     Num,
     OpenAPIRoute,
     OpenAPIRouteSchema,
@@ -35,7 +36,7 @@ export class getFighters extends OpenAPIRoute {
     };
     async handle(
         request: Request,
-        data: Record<string, any>
+        data: DataOf<typeof getFighters.schema>
     ) {
         const { limit } = data.query
 

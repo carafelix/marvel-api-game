@@ -1,5 +1,6 @@
 import {
 	Arr,
+	DataOf,
 	Num,
 	OpenAPIRoute,
 	OpenAPIRouteSchema,
@@ -38,7 +39,7 @@ export class CharacterList extends OpenAPIRoute {
 	};
 	async handle(
 		request: Request,
-		data: Record<string, any>
+		data: DataOf<typeof CharacterList.schema>
 	) {
 		const { limit, offset } = data.query
 

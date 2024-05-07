@@ -1,4 +1,5 @@
 import {
+    DataOf,
     OpenAPIRoute,
     OpenAPIRouteSchema,
     Path,
@@ -32,7 +33,7 @@ export class getOneFighter extends OpenAPIRoute {
     };
     async handle(
         request: Request,
-        data: Record<string, any>
+        data: DataOf<typeof getOneFighter.schema>
     ) {
         const charactersCopy = characters.slice()
 

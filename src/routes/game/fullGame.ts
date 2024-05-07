@@ -4,7 +4,7 @@ import {
     OpenAPIRouteSchema,
     Str,
 } from "@cloudflare/itty-router-openapi";
-import { Character, CharacterSchema, CharactersArrSchema, FighterSchema, TeamSchema } from "../../lib/schemas";
+import { Character, CharacterSchema, CharactersArrSchema, FighterSchema, FightersArrSchema } from "../../lib/schemas";
 import { getRandomUniqueElementsFromArray } from "lib/getRandomsNoDuplicates";
 import characters from '../../lib/json/characters.json'
 import { getHP } from "lib/getHP";
@@ -28,10 +28,7 @@ export class FullGameFromScratch extends OpenAPIRoute {
             }
         },
     };
-    async handle(
-        request: Request,
-        data: Record<string, any>
-    ) {
+    async handle() {
         const charactersResult = getRandomUniqueElementsFromArray<Character>(characters, 10, CharacterSchema)
         const parsedCharacters = CharactersArrSchema.parse(charactersResult)
         const fightersResult = parsedCharacters.map(character => {
@@ -44,7 +41,7 @@ export class FullGameFromScratch extends OpenAPIRoute {
                 hp,
             }
         })
-        const fighters = TeamSchema.parse(fightersResult)
+        const fighters = FightersArrSchema.parse(fightersResult)
 
         const log: string[] = []
         const teamOne = fighters.slice(0, 5)
@@ -52,7 +49,7 @@ export class FullGameFromScratch extends OpenAPIRoute {
 
         const InitialTeamOne = teamOne.slice()
         const InitialTeamTwo = teamTwo.slice()
-        
+
         let turnCount = 0;
 
         while (teamOne.length && teamTwo.length) {
@@ -68,7 +65,7 @@ export class FullGameFromScratch extends OpenAPIRoute {
                 herosInTeam === teamInTurn.length / 2 ? 'neutral' : 'villain'
 
             // pick a character from team in turn
-            const rand = (n : number) => Math.floor(Math.random() * n);
+            const rand = (n: number) => Math.floor(Math.random() * n);
             const currFighter = teamInTurn[rand(teamInTurn.length)]
 
             // should be a switch
