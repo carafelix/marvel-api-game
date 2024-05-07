@@ -2,28 +2,25 @@ import {
     Arr,
     OpenAPIRoute,
     OpenAPIRouteSchema,
+    Str,
 } from "@cloudflare/itty-router-openapi";
-import { CharacterSchema, TeamSchema } from "../lib/schemas";
+import { FighterSchema, TeamSchema } from "../lib/schemas";
 
 export class FullGameFromScratch extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
         tags: ["Game"],
-        summary: "getFighters",
+        summary: "Play full game from start to end",
         responses: {
             "200": {
                 description: "Play a full game and return its results",
                 schema: {
                     success: Boolean,
-                    result: {
-                        fighters: new Arr(CharacterSchema),
+                    initialTeams: {
+                        teamOne: new Arr(FighterSchema),
+                        teamTwo: new Arr(FighterSchema),
                     },
-                },
-            },
-            "489": {
-                description: "Limit exceeded max",
-                schema: {
-                    success: Boolean,
-                    error: String,
+                    log: new Arr(new Str()),
+                    winner: new Str(),
                 },
             }
         },
