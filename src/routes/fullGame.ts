@@ -61,9 +61,9 @@ export class FullGameFromScratch extends OpenAPIRoute {
             // should be a switch
             const FB = (
                 teamAlignment === 'neutral' ?
-                    1 :
+                    2 :
                     currFighter.character.type === teamAlignment ?
-                        1 + rand(10) :
+                        2 + rand(10) :
                         (1 + rand(10)) ** -1
             )
 
