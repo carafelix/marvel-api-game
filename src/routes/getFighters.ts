@@ -5,9 +5,10 @@ import {
     OpenAPIRouteSchema,
     Query,
 } from "@cloudflare/itty-router-openapi";
-import { CharStats, Character, CharacterSchema, FighterSchema } from "../lib/schemas";
+import { Character, CharacterSchema, FighterSchema } from "../lib/schemas";
 import characters from '../lib/json/characters.json' assert {type: 'json'}
 import { getRandomUniqueElementsFromArray } from "lib/getRandomsNoDuplicates";
+import { getHP } from "../lib/getHP";
 
 export class getFighters extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
@@ -37,9 +38,9 @@ export class getFighters extends OpenAPIRoute {
         data: Record<string, any>
     ) {
         const { limit } = data.query
-        
+
         const charactersResult = getRandomUniqueElementsFromArray<Character>(characters, limit, CharacterSchema)
-        
+
         if (!charactersResult || !charactersResult.length) {
             return Response.json(
                 {
@@ -68,10 +69,3 @@ export class getFighters extends OpenAPIRoute {
 }
 
 
-function getHP(stats: CharStats, actualStamina: number): number {
-    const base = ((stats.strength * 0.8) +
-        (stats.durability * 0.8) +
-        stats.power) / 2
-
-    return Math.floor(base * (1 + (actualStamina / 10))) + 100
-}

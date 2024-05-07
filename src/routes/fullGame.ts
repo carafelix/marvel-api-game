@@ -4,7 +4,10 @@ import {
     OpenAPIRouteSchema,
     Str,
 } from "@cloudflare/itty-router-openapi";
-import { FighterSchema, TeamSchema } from "../lib/schemas";
+import { Character, CharacterSchema, CharactersArrSchema, FighterSchema, TeamSchema } from "../lib/schemas";
+import { getRandomUniqueElementsFromArray } from "lib/getRandomsNoDuplicates";
+import characters from '../lib/json/characters.json'
+import { getHP } from "lib/getHP";
 
 export class FullGameFromScratch extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
@@ -29,10 +32,19 @@ export class FullGameFromScratch extends OpenAPIRoute {
         request: Request,
         data: Record<string, any>
     ) {
-        const self = new URL(request.url)
-        const fightersJson = await (await fetch(self.origin + '/api/fighters' + '?limit=10')).json()
-        const fighters = TeamSchema.parse(fightersJson)
+        const charactersResult = getRandomUniqueElementsFromArray<Character>(characters, 10, CharacterSchema)
+        const parsedCharacters = CharactersArrSchema.parse(charactersResult)
+        const fightersResult = parsedCharacters.map(character => {
+            const stamina = Math.floor(Math.random() * 10)
+            const hp = getHP(character.stats, stamina)
 
+            return {
+                character,
+                stamina,
+                hp,
+            }
+        })
+        const fighters = TeamSchema.parse(fightersResult)
         const log: string[] = []
 
         const teamOne = fighters.slice(0, 5)
@@ -42,7 +54,7 @@ export class FullGameFromScratch extends OpenAPIRoute {
         while (teamOne.length && teamTwo.length) {
             const teamInTurn = turnCount % 2 ? teamOne : teamTwo
             const oppositeTeam = teamInTurn === teamOne ? teamTwo : teamOne
-            
+
             const teamInTurnName = teamInTurn === teamOne ? 'A' : 'B'
 
             const herosInTeam = teamInTurn.filter((fighter) => {
@@ -52,7 +64,7 @@ export class FullGameFromScratch extends OpenAPIRoute {
                 herosInTeam === teamInTurn.length / 2 ? 'neutral' : 'villain'
 
             // pick a character from team in turn
-            const rand = (n) => Math.floor(Math.random() * n);
+            const rand = (n : number) => Math.floor(Math.random() * n);
             const currFighter = teamInTurn[rand(teamInTurn.length)]
 
             // should be a switch
