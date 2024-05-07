@@ -1,4 +1,5 @@
 import {
+	Arr,
 	Num,
 	OpenAPIRoute,
 	OpenAPIRouteSchema,
@@ -24,12 +25,7 @@ export class CharacterList extends OpenAPIRoute {
 		responses: {
 			"200": {
 				description: "Returns a list of random characters",
-				schema: {
-					success: Boolean,
-					result: {
-						characters: [CharacterSchema],
-					},
-				},
+				schema: new Arr(CharacterSchema)
 			},
 			"489": {
 				description: "Requested Characters exceeded the Maximum ",
@@ -74,9 +70,6 @@ export class CharacterList extends OpenAPIRoute {
 			)
 		}
 
-		return {
-			success: true,
-			characters: charactersResult,
-		};
+		return charactersResult
 	}
 }

@@ -19,12 +19,7 @@ export class CharacterFetch extends OpenAPIRoute {
 		responses: {
 			"200": {
 				description: "Returns a single Character if found",
-				schema: {
-					success: Boolean,
-					result: {
-						character: CharacterSchema,
-					},
-				},
+				schema: CharacterSchema,
 			},
 			"404": {
 				description: "Character not found",
@@ -55,9 +50,6 @@ export class CharacterFetch extends OpenAPIRoute {
 				}
 			);
 		}
-		return {
-			success: true,
-			character: searchedCharacter
-		};
+		return searchedCharacter
 	}
 }

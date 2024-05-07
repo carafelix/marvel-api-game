@@ -1,3 +1,4 @@
+import { RequestBody } from '@cloudflare/itty-router-openapi'
 import { z } from 'zod'
 
 export const SpriteSchema = z.object({
@@ -27,8 +28,9 @@ export const CharacterSchema = z.object({
 export const FighterSchema = z.object({
   character: CharacterSchema,
   stamina: z.number(),
-  hp: z.number()
+  hp: z.number(),
 })
+
 
 export const CharactersArrSchema = z.array(CharacterSchema)
 export const TeamSchema = z.array(FighterSchema)
@@ -37,9 +39,12 @@ export const FieldSchema = z.array(TeamSchema)
 export const FieldStateSchema = z.object({
   output: FieldSchema,
   log: z.array(z.string()),
-  done: z.boolean()
+  done: z.boolean(),
+  teamInTurn: z.boolean(),
+  round: z.number().min(0).default(0)
 })
 
+export const BodySchema = new RequestBody(FieldStateSchema)
 
 export type CharactersArr = z.TypeOf<typeof CharactersArrSchema>;
 export type Character = z.TypeOf<typeof CharacterSchema>;

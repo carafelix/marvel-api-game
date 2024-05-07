@@ -19,12 +19,7 @@ export class getOneFighter extends OpenAPIRoute {
         responses: {
             "200": {
                 description: "Return a character with Actual Stamina",
-                schema: {
-                    success: Boolean,
-                    result: {
-                        fighter: FighterSchema,
-                    },
-                },
+                schema: FighterSchema
             },
             "489": {
                 description: "Character ID was not found",
@@ -40,7 +35,7 @@ export class getOneFighter extends OpenAPIRoute {
         data: Record<string, any>
     ) {
         const charactersCopy = characters.slice()
-        
+
         const { id } = data.params
         const character = characters.find(({ id: charID }) => +id === +charID)
 
@@ -55,16 +50,12 @@ export class getOneFighter extends OpenAPIRoute {
         const hp = getHP(character.stats, stamina)
 
         return {
-            success: true,
-            fighter: {
-                character,
-                stamina,
-                hp
-            },
-        };
+            character,
+            stamina,
+            hp
+        }
     }
 }
-
 
 function getHP(stats: CharStats, actualStamina: number): number {
     const base = ((stats.strength * 0.8) +

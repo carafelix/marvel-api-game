@@ -1,22 +1,23 @@
 import {
     OpenAPIRoute,
-    OpenAPIRouteSchema, 
+    OpenAPIRouteSchema,
 } from "@cloudflare/itty-router-openapi";
-import { FieldSchema, FieldStateSchema } from "../lib/schemas";
-import characters from '../lib/json/characters.json' assert {type: 'json'}
+
+import { BodySchema, FieldSchema, FieldStateSchema } from "../lib/schemas";
 
 export class playRound extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
         tags: ["Team"],
         summary: "Play a round given 2 teams of proper fighters",
         request: {
-            body: {
-                content: {
-                    "application/json": {
-                        schema: FieldSchema
-                    }
-                }
-            }
+            body: BodySchema
+            // body: {
+            //     content: {
+            //         "application/json": {
+            //             schema: FieldSchema
+            //         }
+            //     }
+            // }
         },
 
         responses: {
@@ -38,28 +39,13 @@ export class playRound extends OpenAPIRoute {
     };
     async handle(
         request: Request,
-        data: Record<string, any>
     ) {
-        const charactersCopy = characters.slice()
-
-        const { id } = data.query
-        const character = characters.find(({ id: charID }) => id === charID)
+        const json = await request.json()
         
-        if (!character) {
-            return {
-                success: false,
-                error: 'Character not Found'
-            }
-        }
-
-        const stamina = Math.floor(Math.random() * 10)
+        console.log(json)
 
         return {
             success: true,
-            fighter: {
-                id,
-                stamina,
-            },
         };
     }
 }

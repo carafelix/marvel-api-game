@@ -2,6 +2,8 @@
 
 ## If a team loses a member, they can re-align. e.g: a 3-2 team loses 2 heros and now becomes 1-2 and is now a villain team.  
 
+## should decide and normalize the use of z.primitive() or new Primitive() from cf
+
 This is a Cloudflare Worker with OpenAPI 3.1 using [itty-router-openapi](https://github.com/cloudflare/itty-router-openapi).
 
 This is an example project made to be used as a quick start into building OpenAPI compliant Workers that generates the

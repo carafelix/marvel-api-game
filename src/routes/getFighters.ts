@@ -7,7 +7,7 @@ import {
 } from "@cloudflare/itty-router-openapi";
 import { CharStats, Character, CharacterSchema, FighterSchema } from "../lib/schemas";
 import characters from '../lib/json/characters.json' assert {type: 'json'}
-import { getRandomNoDuplicates } from "lib/getRandomsNoDuplicates";
+import { getRandomUniqueElementsFromArray } from "lib/getRandomsNoDuplicates";
 
 export class getFighters extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
@@ -21,12 +21,7 @@ export class getFighters extends OpenAPIRoute {
         responses: {
             "200": {
                 description: "Return a list of characters with Actual Stamina initialized",
-                schema: {
-                    success: Boolean,
-                    result: {
-                        fighters: new Arr(CharacterSchema),
-                    },
-                },
+                schema: new Arr(FighterSchema)
             },
             "489": {
                 description: "Limit exceeded max",
@@ -43,7 +38,7 @@ export class getFighters extends OpenAPIRoute {
     ) {
         const { limit } = data.query
         
-        const charactersResult = getRandomNoDuplicates<Character>(characters, limit, CharacterSchema)
+        const charactersResult = getRandomUniqueElementsFromArray<Character>(characters, limit, CharacterSchema)
         
         if (!charactersResult || !charactersResult.length) {
             return Response.json(
@@ -68,10 +63,7 @@ export class getFighters extends OpenAPIRoute {
             }
         })
 
-        return {
-            success: true,
-            fighters,
-        }
+        return fighters
     }
 }
 
