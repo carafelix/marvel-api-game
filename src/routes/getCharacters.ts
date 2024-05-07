@@ -3,8 +3,7 @@ import {
 	OpenAPIRouteSchema,
 	Query,
 } from "@cloudflare/itty-router-openapi";
-import { z } from "zod";
-import { Character, CharacterS, CharacterSchema, CharactersSchema } from "../lib/schemas";
+import { Character, CharacterSchema } from "../lib/schemas";
 import characters from '../lib/json/characters.json' assert {type: 'json'}
 import { getRandomNoDuplicates } from "lib/getRandomsNoDuplicates";
 

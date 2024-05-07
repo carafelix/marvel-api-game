@@ -30,9 +30,6 @@ export const FighterSchema = z.object({
   hp: z.number()
 })
 
-export const FightersArrSchema = z.array(FighterSchema) 
-export const CharactersSchema = z.array(CharacterSchema);
-
 export type Character = z.TypeOf<typeof CharacterSchema>;
 export type CharacterS = z.TypeOf<typeof CharacterSchema>;
 export type Sprite = z.TypeOf<typeof SpriteSchema>;

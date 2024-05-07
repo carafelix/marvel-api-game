@@ -1,11 +1,9 @@
 import {
     OpenAPIRoute,
     OpenAPIRouteSchema,
-    Query
 } from "@cloudflare/itty-router-openapi";
 import { FighterSchema } from "../lib/schemas";
 import characters from '../lib/json/characters.json' assert {type: 'json'}
-import z from "zod";
 
 export class getOneTeam extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
