@@ -5,7 +5,8 @@ import {
 	getFighters,
 	getOneFighter,
 	playRound,
-	fullGame
+	fullGame,
+	initField
 } from "./routes/routes";
 
 const router = OpenAPIRouter({
@@ -18,11 +19,10 @@ router.get("/api/characters/:characterName", getOneCharacter);
 router.get("/api/fighters", getFighters)
 router.get("/api/fighters/:id", getOneFighter)
 
-router.post("/api/game/playRound", playRound )
+router.post("/api/game/initField",  initField) // TODO
+router.post("/api/game/playRound", playRound ) // TODO
+
 router.get("/api/game/full", fullGame)
-
-
-
 
 // 404 for everything else
 router.all("*", () =>

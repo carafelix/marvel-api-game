@@ -4,3 +4,4 @@ export { playRound } from "./game/playRound";
 export { getOneFighter } from "./chars-fighters/getOneFighter";
 export { getFighters } from "./chars-fighters/getFighters";
 export { FullGameFromScratch as fullGame } from './game/fullGame'
+export { initField } from "./game/initField";
