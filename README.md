@@ -15,5 +15,8 @@
     - InitField takes a list of characters and add's them into a BattleField
     - PlayRound takes a BattleField and returns the new State of the BattleField.
 
+## should do
+- add a same origin .request method (like Hono), to call inner endpoints like fetch but internally, to remove some code repetition.
+
 ## Test
 - run ```bun test```
