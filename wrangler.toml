@@ -3,6 +3,12 @@ name = "characters-api"
 main = "src/index.ts"
 compatibility_date = "2024-05-02"
 
+[env.dev.vars]
+host = "http://localhost:8787"
+
+[env.production.vars]
+host = "https://characters-api.heroprotagonist32.workers.dev"
+
 [[unsafe.bindings]]
 name = "MY_RATE_LIMITER"
 type = "ratelimit"

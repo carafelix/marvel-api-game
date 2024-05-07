@@ -25,19 +25,21 @@ export const CharacterSchema = z.object({
 })
 
 export const FighterSchema = z.object({
-  character: z.object(CharacterSchema.shape),
-  as: z.number(),
+  character: CharacterSchema,
+  stamina: z.number(),
   hp: z.number()
 })
 
 export const CharactersArrSchema = z.array(CharacterSchema)
 export const TeamSchema = z.array(FighterSchema)
 export const FieldSchema = z.array(TeamSchema)
+
 export const FieldStateSchema = z.object({
   output: FieldSchema,
   log: z.array(z.string()),
   done: z.boolean()
 })
+
 
 export type CharactersArr = z.TypeOf<typeof CharactersArrSchema>;
 export type Character = z.TypeOf<typeof CharacterSchema>;

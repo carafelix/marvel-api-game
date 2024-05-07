@@ -1,4 +1,5 @@
 import {
+    Arr,
     Num,
     OpenAPIRoute,
     OpenAPIRouteSchema,
@@ -13,7 +14,7 @@ export class getFighters extends OpenAPIRoute {
         tags: ["Fighter"],
         summary: "getFighters",
         parameters: {
-            limit: Query(new Num(), {
+            limit: Query(new Num().default(10), {
                 description: "Amount of characters desired to initiate as a fighters (max 25)"
             }),
         },
@@ -23,7 +24,7 @@ export class getFighters extends OpenAPIRoute {
                 schema: {
                     success: Boolean,
                     result: {
-                        fighters: [FighterSchema],
+                        fighters: new Arr(CharacterSchema),
                     },
                 },
             },
@@ -41,9 +42,9 @@ export class getFighters extends OpenAPIRoute {
         data: Record<string, any>
     ) {
         const { limit } = data.query
-
+        
         const charactersResult = getRandomNoDuplicates<Character>(characters, limit, CharacterSchema)
-
+        
         if (!charactersResult || !charactersResult.length) {
             return Response.json(
                 {
@@ -59,6 +60,7 @@ export class getFighters extends OpenAPIRoute {
         const fighters = charactersResult.map(character => {
             const stamina = Math.floor(Math.random() * 10)
             const hp = getHP(character.stats, stamina)
+
             return {
                 character,
                 stamina,

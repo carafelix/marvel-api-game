@@ -12,10 +12,10 @@ const router = OpenAPIRouter({
 	redoc_url: "/docs"
 });
 
-router.get("/api/characters/", getCharacters);
-router.get("/api/characters/:characterName/", getOneCharacter);
+router.get("/api/characters", getCharacters);
+router.get("/api/characters/:characterName", getOneCharacter);
+router.get("/api/fighters", getFighters)
 router.get("/api/fighters/:id", getOneFighter)
-router.get("/api/fighters/getMany", getFighters)
 
 router.post("api/game/playRound", playRound )
 
