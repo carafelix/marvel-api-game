@@ -13,11 +13,12 @@ export function getRandomNoDuplicates<T>(arr: Array<any>, limit: number, schema:
     const result: T[] = []
     while (limit && copy.length) {
         const i = Math.floor(Math.random() * copy.length)
-        const current = schema.safeParse(copy.splice(i, 1))
+        console.log(copy[i])
+        const current = schema.safeParse(copy.splice(i, 1)[0])
         if(!current.success){
             return false
         } else {
-            result.push(...current.data)
+            result.push(current.data)
             --limit
         }
     }
