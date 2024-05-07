@@ -4,9 +4,9 @@ import {
 	getCharacters,
 	getFighters,
 	getOneFighter,
-	playRound
+	playRound,
+	fullGame
 } from "./routes/routes";
-import { FullGameFromScratch } from "routes/FullGameFromScratch";
 
 const router = OpenAPIRouter({
 	docs_url: "/",
@@ -20,7 +20,7 @@ router.get("/api/fighters/:id", getOneFighter)
 
 router.post("/api/game/playRound", playRound )
 
-router.get("/api/game/full", FullGameFromScratch)
+router.get("/api/game/full", fullGame)
 
 
 
