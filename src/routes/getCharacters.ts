@@ -4,8 +4,9 @@ import {
 	Query,
 } from "@cloudflare/itty-router-openapi";
 import { z } from "zod";
-import { CharacterS, CharacterSchema, CharactersSchema } from "../schemas";
-import characters from './json/characters.json' assert {type: 'json'}
+import { Character, CharacterS, CharacterSchema, CharactersSchema } from "../lib/schemas";
+import characters from '../lib/json/characters.json' assert {type: 'json'}
+import { getRandomNoDuplicates } from "lib/getRandomsNoDuplicates";
 
 const MAX_RESULTS = 25
 export class CharacterList extends OpenAPIRoute {
@@ -41,9 +42,8 @@ export class CharacterList extends OpenAPIRoute {
 		request: Request,
 		data: Record<string, any>
 	) {
-		const charactersCopy = characters.slice()
-		let limit = await data.query.limit
-		
+		const { limit } = data.query
+
 		if (limit > MAX_RESULTS) {
 			return Response.json(
 				{
@@ -55,14 +55,21 @@ export class CharacterList extends OpenAPIRoute {
 				}
 			)
 		};
-		const charactersResult : CharacterS[]= []
-		while (limit) {
-			const i = Math.floor(Math.random() * charactersCopy.length)
-			// should add safeParsing if changing to fetch
-			const current = CharactersSchema.parse(charactersCopy.splice(i, 1))
-			charactersResult.push(...current)
-			--limit
+
+		const charactersResult = getRandomNoDuplicates<Character>(characters, limit, CharacterSchema)
+
+		if(!charactersResult || !charactersResult.length){
+			return Response.json(
+				{
+					success: false,
+					error: "Character result returned empty.",
+				},
+				{
+					status: 489,
+				}
+			)
 		}
+
 		return {
 			success: true,
 			characters: charactersResult,

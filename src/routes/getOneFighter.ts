@@ -2,19 +2,17 @@ import {
     OpenAPIRoute,
     OpenAPIRouteSchema,
     Path,
-    Query,
 } from "@cloudflare/itty-router-openapi";
-import { CharStats, CharacterSchema, CharactersSchema, FighterSchema } from "../schemas";
-import characters from './json/characters.json' assert {type: 'json'}
+import { CharStats, FighterSchema } from "../lib/schemas";
+import characters from '../lib/json/characters.json' assert {type: 'json'}
 
-const MAX_RESULTS = 25
-export class CharacterList extends OpenAPIRoute {
+export class getOneFighter extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
         tags: ["Fighter"],
         summary: "getOneFighter",
         parameters: {
             id: Path(String, {
-                description: "ID of the desired character to convert to fighter"
+                description: "ID of the desired character initiate as a fighter"
             }),
         },
         responses: {
@@ -54,11 +52,11 @@ export class CharacterList extends OpenAPIRoute {
 
         const stamina = Math.floor(Math.random() * 10)
         const hp = getHP(character.stats, stamina)
-        
+
         return {
             success: true,
             fighter: {
-                id,
+                character,
                 stamina,
                 hp
             },
@@ -69,8 +67,8 @@ export class CharacterList extends OpenAPIRoute {
 
 function getHP(stats: CharStats, actualStamina: number): number {
     const base = ((stats.strength * 0.8) +
-                (stats.durability * 0.8) +
-                            stats.power) / 2
+        (stats.durability * 0.8) +
+        stats.power) / 2
 
     return Math.floor(base * (1 + (actualStamina / 10))) + 100
 }

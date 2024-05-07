@@ -4,8 +4,8 @@ import {
 	Path,
 } from "@cloudflare/itty-router-openapi";
 import { z } from "zod";
-import { CharacterSchema } from "../schemas";
-import characters from './json/characters.json'
+import { CharacterSchema } from "../lib/schemas";
+import characters from '../lib/json/characters.json'
 
 export class CharacterFetch extends OpenAPIRoute {
 	static schema: OpenAPIRouteSchema = {

@@ -25,11 +25,12 @@ export const CharacterSchema = z.object({
 })
 
 export const FighterSchema = z.object({
-  charID: z.number(),
+  character: z.object(CharacterSchema.shape),
   as: z.number(),
   hp: z.number()
 })
 
+export const FightersArrSchema = z.array(FighterSchema) 
 export const CharactersSchema = z.array(CharacterSchema);
 
 export type Character = z.TypeOf<typeof CharacterSchema>;
