@@ -2,6 +2,7 @@ import {
     OpenAPIRoute,
     OpenAPIRouteSchema,
     Path,
+    Str,
 } from "@cloudflare/itty-router-openapi";
 import { CharStats, FighterSchema } from "../lib/schemas";
 import characters from '../lib/json/characters.json' assert {type: 'json'}
@@ -9,9 +10,9 @@ import characters from '../lib/json/characters.json' assert {type: 'json'}
 export class getOneFighter extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
         tags: ["Fighter"],
-        summary: "getOneFighter",
+        summary: "Get a single Character by id",
         parameters: {
-            id: Path(String, {
+            id: Path(new Str(), {
                 description: "ID of the desired character initiate as a fighter"
             }),
         },
@@ -39,9 +40,9 @@ export class getOneFighter extends OpenAPIRoute {
         data: Record<string, any>
     ) {
         const charactersCopy = characters.slice()
-
-        const { id } = data.query
-        const character = characters.find(({ id: charID }) => id === charID)
+        
+        const { id } = data.params
+        const character = characters.find(({ id: charID }) => +id === +charID)
 
         if (!character) {
             return {

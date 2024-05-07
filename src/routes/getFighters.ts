@@ -1,4 +1,5 @@
 import {
+    Num,
     OpenAPIRoute,
     OpenAPIRouteSchema,
     Query,
@@ -10,10 +11,9 @@ import { getRandomNoDuplicates } from "lib/getRandomsNoDuplicates";
 export class getFighters extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
         tags: ["Fighter"],
-        summary: "getOneFighter",
+        summary: "getFighters",
         parameters: {
-            limit: Query(Number, {
-                name: 'amount',
+            limit: Query(new Num(), {
                 description: "Amount of characters desired to initiate as a fighters (max 25)"
             }),
         },
@@ -23,7 +23,7 @@ export class getFighters extends OpenAPIRoute {
                 schema: {
                     success: Boolean,
                     result: {
-                        fighter: FighterSchema,
+                        fighters: [FighterSchema],
                     },
                 },
             },
@@ -44,16 +44,16 @@ export class getFighters extends OpenAPIRoute {
 
         const charactersResult = getRandomNoDuplicates<Character>(characters, limit, CharacterSchema)
 
-        if(!charactersResult || !charactersResult.length){
+        if (!charactersResult || !charactersResult.length) {
             return Response.json(
-				{
-					success: false,
-					error: "Character result returned empty.",
-				},
-				{
-					status: 489,
-				}
-			)
+                {
+                    success: false,
+                    error: "Character result returned empty.",
+                },
+                {
+                    status: 489,
+                }
+            )
         }
 
         const fighters = charactersResult.map(character => {
@@ -68,7 +68,7 @@ export class getFighters extends OpenAPIRoute {
 
         return {
             success: true,
-			fighters,
+            fighters,
         }
     }
 }

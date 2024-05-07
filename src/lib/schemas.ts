@@ -30,6 +30,16 @@ export const FighterSchema = z.object({
   hp: z.number()
 })
 
+export const CharactersArrSchema = z.array(CharacterSchema)
+export const TeamSchema = z.array(FighterSchema)
+export const FieldSchema = z.array(TeamSchema)
+export const FieldStateSchema = z.object({
+  output: FieldSchema,
+  log: z.array(z.string()),
+  done: z.boolean()
+})
+
+export type CharactersArr = z.TypeOf<typeof CharactersArrSchema>;
 export type Character = z.TypeOf<typeof CharacterSchema>;
 export type CharacterS = z.TypeOf<typeof CharacterSchema>;
 export type Sprite = z.TypeOf<typeof SpriteSchema>;

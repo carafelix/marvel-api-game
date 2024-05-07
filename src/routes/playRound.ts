@@ -1,32 +1,34 @@
 import {
     OpenAPIRoute,
-    OpenAPIRouteSchema,
+    OpenAPIRouteSchema, 
 } from "@cloudflare/itty-router-openapi";
-import { FighterSchema } from "../lib/schemas";
+import { FieldSchema, FieldStateSchema } from "../lib/schemas";
 import characters from '../lib/json/characters.json' assert {type: 'json'}
 
-export class getOneTeam extends OpenAPIRoute {
+export class playRound extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
         tags: ["Team"],
-        summary: "getOneTeam",
-        parameters: {
-            // id: (z.array(FighterSchema), {
-            //     description: "ID's array of the desired team members"
-            // }), 
-            // MISSING IMPLEMENTATION
+        summary: "Play a round given 2 teams of proper fighters",
+        request: {
+            body: {
+                content: {
+                    "application/json": {
+                        schema: FieldSchema
+                    }
+                }
+            }
         },
+
         responses: {
             "200": {
-                description: "Returns a team of five member with their stats modified according to the team alignment",
+                description: "Returns the state of each team after they have battled against",
                 schema: {
                     success: Boolean,
-                    result: {
-                        fighter: [FighterSchema],
-                    },
+                    result: FieldStateSchema
                 },
             },
             "489": {
-                description: "Character ID was not found",
+                description: "Invalid Format",
                 schema: {
                     success: Boolean,
                     error: String,

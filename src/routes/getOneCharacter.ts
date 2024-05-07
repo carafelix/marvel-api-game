@@ -12,7 +12,7 @@ export class CharacterFetch extends OpenAPIRoute {
 		tags: ["Characters"],
 		summary: "Get a single Character by name",
 		parameters: {
-			characterName: Path(z.string(), {
+			characterName: Path(z.string().default('Ultron'), {
 				description: "Character name",
 			}),
 		},

@@ -1,21 +1,25 @@
 import {
+	Num,
 	OpenAPIRoute,
 	OpenAPIRouteSchema,
 	Query,
 } from "@cloudflare/itty-router-openapi";
-import { Character, CharacterSchema } from "../lib/schemas";
+import { CharacterSchema, CharactersArrSchema } from "../lib/schemas";
 import characters from '../lib/json/characters.json' assert {type: 'json'}
-import { getRandomNoDuplicates } from "lib/getRandomsNoDuplicates";
+import { z } from 'zod'
 
-const MAX_RESULTS = 25
+const MAX_RESULTS = characters.length
+
 export class CharacterList extends OpenAPIRoute {
 	static schema: OpenAPIRouteSchema = {
 		tags: ["Characters"],
 		summary: "List Characters",
 		parameters: {
-			limit: Query(Number, {
-				description: "Number of results (Max 25)",
-				default: 10,
+			limit: Query(new Num().default(10), {
+				description: "Number of results (Max 50)",
+			}),
+			offset: Query(new Num().default(0), {
+				description: "Offset from which the list starts",
 			}),
 		},
 		responses: {
@@ -41,23 +45,25 @@ export class CharacterList extends OpenAPIRoute {
 		request: Request,
 		data: Record<string, any>
 	) {
-		const { limit } = data.query
+		const { limit, offset } = data.query
+
+		console.log(limit, offset)
 
 		if (limit > MAX_RESULTS) {
 			return Response.json(
 				{
 					success: false,
-					error: "Limit greater than max results per request (25)",
+					error: "Limit greater than max results per request",
 				},
 				{
 					status: 489,
 				}
 			)
 		};
+		
+		const charactersResult = CharactersArrSchema.parse(characters).slice(offset, offset + limit)
 
-		const charactersResult = getRandomNoDuplicates<Character>(characters, limit, CharacterSchema)
-
-		if(!charactersResult || !charactersResult.length){
+		if (!charactersResult) {
 			return Response.json(
 				{
 					success: false,
