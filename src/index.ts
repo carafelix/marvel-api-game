@@ -1,5 +1,5 @@
 import { OpenAPIRouter} from "@cloudflare/itty-router-openapi";
-import { getOneCharacter, getCharacters } from "./routes/routes";
+import { getOneCharacter, getCharacters, getFighters } from "./routes/routes";
 import { getOneFighter } from "routes/getOneFighter";
 import { getOneTeam } from "routes/getOneTeam";
 
@@ -10,10 +10,10 @@ const router = OpenAPIRouter({
 
 router.get("/api/characters/", getCharacters);
 router.get("/api/characters/:characterName/", getOneCharacter);
-
 router.get("api/fighters/getOne", getOneFighter)
-router.post("api/team/getOne", getOneTeam )
-router.get("api/game/fightRound", )
+router.get("api/fighters/getMany", getFighters)
+
+// router.post("api/team/getOne", getOneTeam )
 
 
 // 404 for everything else

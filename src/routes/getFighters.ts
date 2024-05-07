@@ -7,7 +7,7 @@ import { CharStats, Character, CharacterSchema, FighterSchema } from "../lib/sch
 import characters from '../lib/json/characters.json' assert {type: 'json'}
 import { getRandomNoDuplicates } from "lib/getRandomsNoDuplicates";
 
-export class getOneFighter extends OpenAPIRoute {
+export class getFighters extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
         tags: ["Fighter"],
         summary: "getOneFighter",
