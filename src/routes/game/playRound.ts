@@ -3,21 +3,21 @@ import {
     OpenAPIRouteSchema,
 } from "@cloudflare/itty-router-openapi";
 
-import { BodySchema, FieldSchema, FieldStateSchema } from "../lib/schemas";
+import { BodySchema, FieldSchema, FieldStateSchema } from "../../lib/schemas";
 
 export class playRound extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
-        tags: ["Team"],
+        tags: ["Game"],
         summary: "Play a round given 2 teams of proper fighters",
         request: {
-            body: BodySchema
-            // body: {
-            //     content: {
-            //         "application/json": {
-            //             schema: FieldSchema
-            //         }
-            //     }
-            // }
+            // body: BodySchema
+            body: {
+                content: {
+                    "application/json": {
+                        schema: FieldSchema
+                    }
+                }
+            }
         },
 
         responses: {

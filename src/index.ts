@@ -19,7 +19,6 @@ router.get("/api/fighters", getFighters)
 router.get("/api/fighters/:id", getOneFighter)
 
 router.post("/api/game/playRound", playRound )
-
 router.get("/api/game/full", fullGame)
 
 

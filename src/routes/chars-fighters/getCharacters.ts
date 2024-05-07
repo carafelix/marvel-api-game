@@ -5,8 +5,8 @@ import {
 	OpenAPIRouteSchema,
 	Query,
 } from "@cloudflare/itty-router-openapi";
-import { CharacterSchema, CharactersArrSchema } from "../lib/schemas";
-import characters from '../lib/json/characters.json' assert {type: 'json'}
+import { CharacterSchema, CharactersArrSchema } from "../../lib/schemas";
+import characters from '../../lib/json/characters.json' assert {type: 'json'}
 
 const MAX_RESULTS = characters.length
 

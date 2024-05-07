@@ -4,8 +4,8 @@ import {
     Path,
     Str,
 } from "@cloudflare/itty-router-openapi";
-import { CharStats, FighterSchema } from "../lib/schemas";
-import characters from '../lib/json/characters.json' assert {type: 'json'}
+import { CharStats, FighterSchema } from "../../lib/schemas";
+import characters from '../../lib/json/characters.json' assert {type: 'json'}
 
 export class getOneFighter extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {

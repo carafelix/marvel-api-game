@@ -5,15 +5,15 @@ import {
     OpenAPIRouteSchema,
     Query,
 } from "@cloudflare/itty-router-openapi";
-import { Character, CharacterSchema, FighterSchema } from "../lib/schemas";
-import characters from '../lib/json/characters.json' assert {type: 'json'}
+import { Character, CharacterSchema, FighterSchema } from "../../lib/schemas";
+import characters from '../../lib/json/characters.json' assert {type: 'json'}
 import { getRandomUniqueElementsFromArray } from "lib/getRandomsNoDuplicates";
-import { getHP } from "../lib/getHP";
+import { getHP } from "../../lib/getHP";
 
 export class getFighters extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
         tags: ["Fighter"],
-        summary: "getFighters",
+        summary: "Get a list of Fighters with HP and Stamina initialized",
         parameters: {
             limit: Query(new Num().default(10), {
                 description: "Amount of characters desired to initiate as a fighters (max 25)"

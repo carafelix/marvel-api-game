@@ -4,23 +4,23 @@ import {
     OpenAPIRouteSchema,
     Str,
 } from "@cloudflare/itty-router-openapi";
-import { Character, CharacterSchema, CharactersArrSchema, FighterSchema, TeamSchema } from "../lib/schemas";
+import { Character, CharacterSchema, CharactersArrSchema, FighterSchema, TeamSchema } from "../../lib/schemas";
 import { getRandomUniqueElementsFromArray } from "lib/getRandomsNoDuplicates";
-import characters from '../lib/json/characters.json'
+import characters from '../../lib/json/characters.json'
 import { getHP } from "lib/getHP";
 
 export class FullGameFromScratch extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
         tags: ["Game"],
-        summary: "Play full game from start to end",
+        summary: "Play full game from scratch to end",
         responses: {
             "200": {
                 description: "Play a full game and return its results",
                 schema: {
                     success: Boolean,
                     initialTeams: {
-                        teamOne: new Arr(FighterSchema),
-                        teamTwo: new Arr(FighterSchema),
+                        teamA: new Arr(FighterSchema),
+                        teamB: new Arr(FighterSchema),
                     },
                     log: new Arr(new Str()),
                     winner: new Str(),
@@ -45,10 +45,14 @@ export class FullGameFromScratch extends OpenAPIRoute {
             }
         })
         const fighters = TeamSchema.parse(fightersResult)
-        const log: string[] = []
 
+        const log: string[] = []
         const teamOne = fighters.slice(0, 5)
         const teamTwo = fighters.slice(5, 10)
+
+        const InitialTeamOne = teamOne.slice()
+        const InitialTeamTwo = teamTwo.slice()
+        
         let turnCount = 0;
 
         while (teamOne.length && teamTwo.length) {
@@ -101,11 +105,12 @@ export class FullGameFromScratch extends OpenAPIRoute {
             if (attackedEnemy.hp < 0) {
                 oppositeTeam.shift()
             }
-
-            log.push(
-                `In turn ${turnCount}, team ${teamInTurnName}:
-                ${currFighter.character.name} attacked ${attackedEnemy.character.name}
-                inflicting ${currAttack.toFixed(2)} damage!${attackedEnemy.hp < 0 ? '\n ¡' + attackedEnemy.character.name + ' died!' : ''}`
+            // log could be an array uh
+            log.push(`In turn ${turnCount}, team ${teamInTurnName}:
+        ${currFighter.character.name} attacked ${attackedEnemy.character.name}
+        inflicting ${currAttack.toFixed(2)} damage!
+        Leaving him with ${attackedEnemy.hp.toFixed(1)} HP!
+        ${attackedEnemy.hp < 0 ? '\n ¡' + attackedEnemy.character.name + ' died!' : ''}`
             )
             turnCount++
         }
@@ -113,12 +118,12 @@ export class FullGameFromScratch extends OpenAPIRoute {
 
         return {
             success: true,
+            winner,
             initialTeams: {
-                teamOne,
-                teamTwo
+                teamA: InitialTeamOne,
+                teamB: InitialTeamTwo
             },
             log,
-            winner,
         }
     }
 }
