@@ -54,6 +54,7 @@ export class playRound extends OpenAPIRoute {
         // pick a character from team in turn
         const rand = (n: number) => Math.floor(Math.random() * n);
         const currFighter = teamInTurn[rand(teamInTurn.length)]
+        const initialStats = {...currFighter.character.stats}
         console.log(currFighter.character.type)
         // should be a switch
         const FB = (
@@ -104,6 +105,7 @@ export class playRound extends OpenAPIRoute {
             battlefield.done = true
             battlefield.log.push(`Victory for team: ${teamInTurnName}`)
         }
+        currFighter.character.stats = initialStats
 
         return battlefield
     }
