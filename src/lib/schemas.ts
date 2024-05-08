@@ -40,7 +40,7 @@ export const FieldStateSchema = z.object({
   done: z.boolean(),
   winner: z.string().optional(),
   teams: TeamsSchema,
-  log: z.array(z.array(z.string())),
+  log: z.array(z.array(z.string().default('Lets the battle begin'))),
   round: z.number().min(0).default(0)
 })
 
