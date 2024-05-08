@@ -111,6 +111,7 @@ export class FullGameFromScratch extends OpenAPIRoute {
             turnCount++
         }
         const winner = teamOne.length ? 'team A' : 'team B'
+        log.push([winner + ' Wins!'])
 
         return {
             success: true,
