@@ -11,7 +11,7 @@ export class getFighters extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
         tags: ["Fighter"],
         summary: "Get two teams of Fighters with HP and Stamina initialized",
-        requestBody: bodyRequestTeamsTupleSchema(CharactersArrSchema),
+        requestBody: CharactersArrSchema.min(2),
         responses: {
             "200": {
                 description: "Return a list of characters with Actual Stamina initialized",
@@ -29,11 +29,12 @@ export class getFighters extends OpenAPIRoute {
     async handle(
         request: Request,
         data: DataOf<typeof getFighters.schema> & {
-            body: z.TypeOf<ReturnType<typeof bodyRequestTeamsTupleSchema>>
+            body: z.TypeOf<typeof CharactersArrSchema>
         }
     ) {
-        const teamAChars = CharactersArrSchema.parse(data.body[0])
-        const teamBChars = CharactersArrSchema.parse(data.body[1])
+        const chars = data.body
+        const teamAChars = chars.slice(0, chars.length / 2)
+        const teamBChars = chars.slice(chars.length / 2)
 
         if(teamAChars.length !== teamBChars.length){
             return {
@@ -60,10 +61,10 @@ export class getFighters extends OpenAPIRoute {
                 hp,
             }
         })
-        return {
-            0: teamA,
-            1: teamB
-        }
+        return [
+            teamA,
+            teamB
+        ]
     }
 }
 

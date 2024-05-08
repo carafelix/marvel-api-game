@@ -41,7 +41,7 @@ export const bodyRequestTeamsTupleSchema =
     return z.object({
       0: ArrSchema,
       1: ArrSchema
-    }).or(z.array(z.array(ArrSchema)))
+    })
   }
 
 export const TeamsSchema = z.object({
