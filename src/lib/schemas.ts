@@ -33,16 +33,8 @@ export const FighterSchema = z.object({
 })
 
 export const FightersArrSchema = z.array(FighterSchema)
+export const FightersArrTupleSchema = z.array(FightersArrSchema).min(2).max(2)
 
-export const bodyRequestTeamsTupleSchema =
-  (ArrSchema: typeof CharactersArrSchema |
-    typeof FightersArrSchema
-  ) => {
-    return z.object({
-      0: ArrSchema,
-      1: ArrSchema
-    })
-  }
 
 export const TeamsSchema = z.object({
   0: FightersArrSchema,
@@ -53,8 +45,8 @@ export const FieldStateSchema = z.object({
   output: TeamsSchema,
   log: z.array(z.string()),
   done: z.boolean(),
-  teamInTurn: z.boolean(),
-  round: z.number().min(0).default(0)
+  teamInTurn: z.number().min(0).max(1),
+  round: z.number().min(0)
 })
 
 export type CharactersArr = z.TypeOf<typeof CharactersArrSchema>;

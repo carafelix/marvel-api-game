@@ -3,7 +3,7 @@ import {
     OpenAPIRoute,
     OpenAPIRouteSchema,
 } from "@cloudflare/itty-router-openapi";
-import { Character, CharactersArr, CharactersArrSchema, Fighter, FightersArr, TeamsSchema, bodyRequestTeamsTupleSchema } from "../../lib/schemas";
+import { Character, CharactersArrSchema, Fighter, FightersArr, TeamsSchema } from "../../lib/schemas";
 import z from 'zod';
 import { getHP } from "lib/getHP";
 

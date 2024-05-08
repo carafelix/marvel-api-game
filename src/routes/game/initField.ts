@@ -5,20 +5,17 @@ import {
     OpenAPIRouteSchema,
 } from "@cloudflare/itty-router-openapi";
 import z from 'zod'
-import { bodyRequestTeamsTupleSchema, FieldStateSchema, FightersArrSchema } from "../../lib/schemas";
+import { FieldStateSchema, FightersArrTupleSchema } from "../../lib/schemas";
 
 export class initField extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
         tags: ["Game"],
-        summary: "returns a BattleField given two teams inside a tuple array-like object",
-        requestBody: z.array(FightersArrSchema).min(2).max(2),
+        summary: "returns a BattleField given two teams inside a tuple",
+        requestBody: FightersArrTupleSchema,
         responses: {
             "200": {
                 description: "Returns the state of each team after they have battled against",
-                schema: {
-                    success: Boolean,
-                    result: FieldStateSchema
-                },
+                schema: FieldStateSchema
             },
             "489": {
                 description: "Invalid Format",
@@ -32,13 +29,15 @@ export class initField extends OpenAPIRoute {
     async handle(
         request: Request,
         data: DataOf<typeof initField.schema> & {
-            body: z.TypeOf<ReturnType<typeof bodyRequestTeamsTupleSchema>>
+            body: z.TypeOf<typeof FightersArrTupleSchema>
         }
     ) {
-        const v = await request.json()
-        console.log(v)
         return {
-            success: true,
-        };
+            teams: [data.body[0],data.body[1]],
+            log: ['Lets the battle begin'],
+            done: false,
+            teamInTurn: 0,
+            round: 0
+          }
     }
 }
