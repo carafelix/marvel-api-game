@@ -76,7 +76,8 @@ export class FullGameFromScratch extends OpenAPIRoute {
                         2 + rand(10) :
                         (1 + rand(10)) ** -1
             )
-
+            const initialStats = {...currFighter.character.stats}
+            
             for (const stat in currFighter.character.stats) {
                 const base = currFighter.character.stats[stat]
                 currFighter.character.stats[stat] =
@@ -104,10 +105,12 @@ export class FullGameFromScratch extends OpenAPIRoute {
             }
             // log could be an array uh
             log.push([`In turn ${turnCount}, team ${teamInTurnName}:`,
-            `${currFighter.character.name} attacked ${attackedEnemy.character.name}`,
-            `inflicting ${currAttack.toFixed(2)} damage!`,
-            `Leaving him with ${attackedEnemy.hp.toFixed(1)} HP!`,
-            `${attackedEnemy.hp < 0 ? '¡' + attackedEnemy.character.name + ' died!' : ''}`])
+                        `${currFighter.character.name} attacked ${attackedEnemy.character.name}`,
+                        `inflicting ${currAttack.toFixed(2)} damage!`,
+                        `Leaving him with ${attackedEnemy.hp.toFixed(1)} HP!`,
+                        `${attackedEnemy.hp < 0 ? '¡' + attackedEnemy.character.name + ' died!' : ''}`])
+            
+            currFighter.character.stats = initialStats
             turnCount++
         }
         const winner = teamOne.length ? 'team A' : 'team B'
