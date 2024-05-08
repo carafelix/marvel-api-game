@@ -16,9 +16,10 @@ const router = OpenAPIRouter({
 
 router.get("/api/characters", getCharacters);
 router.get("/api/characters/:characterName", getOneCharacter);
-router.get("/api/fighters", getFighters)
+
 router.get("/api/fighters/:id", getOneFighter)
 
+router.post("/api/fighters", getFighters)
 router.post("/api/game/initField",  initField) // TODO
 router.post("/api/game/playRound", playRound ) // TODO
 

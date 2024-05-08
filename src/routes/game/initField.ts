@@ -5,13 +5,13 @@ import {
     RequestBody,
 } from "@cloudflare/itty-router-openapi";
 
-import { BodyTeamsSchema, FieldStateSchema, FightersArrSchema } from "../../lib/schemas";
+import { bodyRequestTeamsTupleSchema, FieldStateSchema, FightersArrSchema } from "../../lib/schemas";
 
 export class initField extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
         tags: ["Game"],
-        summary: "returns a BattleField given a even array of proper fighters",
-        requestBody: BodyTeamsSchema,
+        summary: "returns a BattleField given two teams inside a tuple array-like object",
+        requestBody: bodyRequestTeamsTupleSchema(FightersArrSchema),
         responses: {
             "200": {
                 description: "Returns the state of each team after they have battled against",

@@ -22,7 +22,7 @@ export const CharacterSchema = z.object({
   thumbnail: z.string().url(),
   sprites: z.array(SpriteSchema),
   stats: z.object(StatsSchema.shape),
-  type: z.enum(['hero','villain'])
+  type: z.enum(['hero', 'villain'])
 })
 export const CharactersArrSchema = z.array(CharacterSchema)
 
@@ -34,14 +34,24 @@ export const FighterSchema = z.object({
 
 export const FightersArrSchema = z.array(FighterSchema)
 
-export const BodyTeamsSchema = z.object({
+export const bodyRequestTeamsTupleSchema =
+  (ArrSchema: typeof FightersArrSchema |
+    typeof CharactersArrSchema) => {
+
+    return z.object({
+      0: ArrSchema,
+      1: ArrSchema
+    }).or(z.array(z.array(ArrSchema)))
+}
+
+
+export const TeamsSchema = z.object({
   0: FightersArrSchema,
   1: FightersArrSchema
 })
 
-export const FieldSchema = z.array(FightersArrSchema)
 export const FieldStateSchema = z.object({
-  output: FieldSchema,
+  output: TeamsSchema,
   log: z.array(z.string()),
   done: z.boolean(),
   teamInTurn: z.boolean(),
@@ -50,7 +60,7 @@ export const FieldStateSchema = z.object({
 
 export type CharactersArr = z.TypeOf<typeof CharactersArrSchema>;
 export type Character = z.TypeOf<typeof CharacterSchema>;
-export type CharacterS = z.TypeOf<typeof CharacterSchema>;
+export type Fighter = z.TypeOf<typeof FighterSchema>;
 export type FightersArr = z.TypeOf<typeof FightersArrSchema>;
 export type Sprite = z.TypeOf<typeof SpriteSchema>;
 export type CharStats = z.TypeOf<typeof StatsSchema>;

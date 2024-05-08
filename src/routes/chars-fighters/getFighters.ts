@@ -1,32 +1,26 @@
 import {
-    Arr,
     DataOf,
-    Num,
     OpenAPIRoute,
-    OpenAPIRouteSchema,
-    Query,
+    OpenAPIRouteSchema
 } from "@cloudflare/itty-router-openapi";
-import { Character, CharacterSchema, FighterSchema } from "../../lib/schemas";
+import { Character, CharacterSchema, CharactersArrSchema, TeamsSchema, FightersArrSchema, bodyRequestTeamsTupleSchema, Fighter, FightersArr, CharactersArr } from "../../lib/schemas";
 import characters from '../../lib/json/characters.json' assert {type: 'json'}
 import { getRandomUniqueElementsFromArray } from "lib/getRandomsNoDuplicates";
 import { getHP } from "../../lib/getHP";
+import z from 'zod';
 
 export class getFighters extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
         tags: ["Fighter"],
-        summary: "Get a list of Fighters with HP and Stamina initialized",
-        parameters: {
-            limit: Query(new Num().default(10), {
-                description: "Amount of characters desired to initiate as a fighters (max 25)"
-            }),
-        },
+        summary: "Get two teams of Fighters with HP and Stamina initialized",
+        requestBody: bodyRequestTeamsTupleSchema(CharactersArrSchema),
         responses: {
             "200": {
                 description: "Return a list of characters with Actual Stamina initialized",
-                schema: new Arr(FighterSchema)
+                schema: TeamsSchema
             },
             "489": {
-                description: "Limit exceeded max",
+                description: "Characters where not even",
                 schema: {
                     success: Boolean,
                     error: String,
@@ -38,34 +32,37 @@ export class getFighters extends OpenAPIRoute {
         request: Request,
         data: DataOf<typeof getFighters.schema>
     ) {
-        const { limit } = data.query
+        const json = request.json()
 
-        const charactersResult = getRandomUniqueElementsFromArray<Character>(characters, limit, CharacterSchema)
+        const chars = bodyRequestTeamsTupleSchema(CharactersArrSchema)
+            .parse(json);
+        const teamAChars = CharactersArrSchema.parse(chars[0])
+        const teamBChars = CharactersArrSchema.parse(chars[1])
 
-        if (!charactersResult || !charactersResult.length) {
-            return Response.json(
-                {
-                    success: false,
-                    error: "Character result returned empty.",
-                },
-                {
-                    status: 489,
-                }
-            )
-        }
-
-        const fighters = charactersResult.map(character => {
+        
+        const teamA : FightersArr = teamAChars.map((character : Character) : Fighter  => {
             const stamina = Math.floor(Math.random() * 10)
             const hp = getHP(character.stats, stamina)
-
             return {
                 character,
                 stamina,
                 hp,
             }
         })
-
-        return fighters
+        const teamB : FightersArr = teamBChars.map((character : Character) : Fighter  => {
+            const stamina = Math.floor(Math.random() * 10)
+            const hp = getHP(character.stats, stamina)
+            return {
+                character,
+                stamina,
+                hp,
+            }
+        })
+        
+        return {
+            0: teamA,
+            1: teamB
+        }
     }
 }
 

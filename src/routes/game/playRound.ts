@@ -3,7 +3,7 @@ import {
     OpenAPIRouteSchema,
 } from "@cloudflare/itty-router-openapi";
 
-import { BodyTeamsSchema, FieldStateSchema } from "../../lib/schemas";
+import { FieldStateSchema } from "../../lib/schemas";
 
 export class playRound extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
