@@ -34,6 +34,10 @@ In reality the BattleField state should not be handled inside the client, beside
     - fight starts
 - initField and getFighters could be merged inside one single endpoint, but I preferred this way to test and learn the schema validations process.
 
+## Disclaimer
+- Code for fullgame and play round should reuse the same functions, but the part of this project I was interested was the request / schema validation
+- Code readability for the logic parts of the game its indeed garbage, I was really more focus into the endpoint / request part of things. That part its okay. It's using class-based routes / schemas  
+
 ## should do
 - add a same origin .request method (like Hono), to call inner endpoints like fetch but internally, to remove some code repetition. I think this is possible in itty router using [CORS](https://itty.dev/itty-router/cors). That would make indeed a request, instead of bypassing it, but would make code concise.
 
