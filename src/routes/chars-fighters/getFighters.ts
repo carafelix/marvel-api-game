@@ -2,9 +2,10 @@ import {
     DataOf,
     OpenAPIRoute,
     OpenAPIRouteSchema,
-    RequestBody} from "@cloudflare/itty-router-openapi";
-import { CharactersArrSchema, TeamsSchema, bodyRequestTeamsTupleSchema } from "../../lib/schemas";
+} from "@cloudflare/itty-router-openapi";
+import { Character, CharactersArr, CharactersArrSchema, Fighter, FightersArr, TeamsSchema, bodyRequestTeamsTupleSchema } from "../../lib/schemas";
 import z from 'zod';
+import { getHP } from "lib/getHP";
 
 export class getFighters extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
@@ -31,44 +32,38 @@ export class getFighters extends OpenAPIRoute {
             body: z.TypeOf<ReturnType<typeof bodyRequestTeamsTupleSchema>>
         }
     ) {
-        return data.body
+        const teamAChars = CharactersArrSchema.parse(data.body[0])
+        const teamBChars = CharactersArrSchema.parse(data.body[1])
 
-        // const json = await request.json()
-        // const chars = bodyRequestTeamsTupleSchema(CharactersArrSchema)
-        //     .parse(json);
-        // const teamAChars = CharactersArrSchema.parse(chars[0])
-        // const teamBChars = CharactersArrSchema.parse(chars[1])
+        if(teamAChars.length !== teamBChars.length){
+            return {
+                success: false,
+                error: 'Teams length was not even'
+            }
+        }
 
-        // if(teamAChars.length !== teamBChars.length){
-        //     return {
-        //         success: false,
-        //         error: 'Teams length was not even'
-        //     }
-        // }
-
-        // const teamA : FightersArr = teamAChars.map((character : Character) : Fighter  => {
-        //     const stamina = Math.floor(Math.random() * 10)
-        //     const hp = getHP(character.stats, stamina)
-        //     return {
-        //         character,
-        //         stamina,
-        //         hp,
-        //     }
-        // })
-        // const teamB : FightersArr = teamBChars.map((character : Character) : Fighter  => {
-        //     const stamina = Math.floor(Math.random() * 10)
-        //     const hp = getHP(character.stats, stamina)
-        //     return {
-        //         character,
-        //         stamina,
-        //         hp,
-        //     }
-        // })
-        return {}
-        // return {
-        //     0: teamA,
-        //     1: teamB
-        // }
+        const teamA : FightersArr = teamAChars.map((character : Character) : Fighter  => {
+            const stamina = Math.floor(Math.random() * 10)
+            const hp = getHP(character.stats, stamina)
+            return {
+                character,
+                stamina,
+                hp,
+            }
+        })
+        const teamB : FightersArr = teamBChars.map((character : Character) : Fighter  => {
+            const stamina = Math.floor(Math.random() * 10)
+            const hp = getHP(character.stats, stamina)
+            return {
+                character,
+                stamina,
+                hp,
+            }
+        })
+        return {
+            0: teamA,
+            1: teamB
+        }
     }
 }
 
