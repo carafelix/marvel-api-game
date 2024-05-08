@@ -4,9 +4,8 @@
 ### Implements this ["game"](./specs/implementation.pdf), and split it into api endpoints.
 
 Just wanna check what is it? run in your terminal:
-```npm install -g json``` and then:
 ```
-curl -X 'GET' 'https://characters-api.heroprotagonist32.workers.dev/api/game/full' -H 'accept: application/json' | json
+curl -X 'GET' 'https://characters-api.heroprotagonist32.workers.dev/api/game/full' -H 'accept: application/json' | jq
  ```
 
 ### Differences with the pdf:
