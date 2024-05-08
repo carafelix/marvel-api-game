@@ -2,6 +2,13 @@
 - (Swagger UI)[https://characters-api.heroprotagonist32.workers.dev/]
 - (ReDocs)[https://characters-api.heroprotagonist32.workers.dev/docs]
 ### Implements this ["game"](./specs/implementation.pdf), and split it into api endpoints.
+
+Just wanna check what is it? run in your terminal:
+```npm install -g json``` and then:
+```
+curl -X 'GET' 'https://characters-api.heroprotagonist32.workers.dev/api/game/full' -H 'accept: application/json' | json
+ ```
+
 ### Differences with the pdf:
 - FB positive factor starts at 2
 - If a team loses a member, the team alignment is recalculated. e.g: a 3-2 heros team loses 2 heros and becomes a 1-2 villain team. Equally balanced teams become neutral teams with a FB factor of 2
