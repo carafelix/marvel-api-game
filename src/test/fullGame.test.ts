@@ -1,4 +1,3 @@
-import { TeamSchema } from "lib/schemas/schemas"
 import { local, prod } from "./tests.env.vars"
 
 // describe('Full game Tests', async () => {

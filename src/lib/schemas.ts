@@ -35,13 +35,24 @@ export const FighterSchema = z.object({
 export const FightersArrSchema = z.array(FighterSchema)
 
 export const bodyRequestTeamsTupleSchema =
-  (ArrSchema: typeof FightersArrSchema |
-    typeof CharactersArrSchema) => {
-
+  (ArrSchema: z.ZodType) => {
     return z.object({
       0: ArrSchema,
       1: ArrSchema
     }).or(z.array(z.array(ArrSchema)))
+  }
+
+export function buildBodyRequestSchema<A extends z.ZodType, T extends z.TypeOf<A>>
+  (schema: A) {
+  return z.object({
+    content: schema
+  })
+}
+
+export function bodySchema(schema : z.ZodType){
+  return z.object({
+    body: schema
+  })
 }
 
 

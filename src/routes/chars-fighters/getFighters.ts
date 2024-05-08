@@ -1,12 +1,9 @@
 import {
     DataOf,
     OpenAPIRoute,
-    OpenAPIRouteSchema
-} from "@cloudflare/itty-router-openapi";
-import { Character, CharacterSchema, CharactersArrSchema, TeamsSchema, FightersArrSchema, bodyRequestTeamsTupleSchema, Fighter, FightersArr, CharactersArr } from "../../lib/schemas";
-import characters from '../../lib/json/characters.json' assert {type: 'json'}
-import { getRandomUniqueElementsFromArray } from "lib/getRandomsNoDuplicates";
-import { getHP } from "../../lib/getHP";
+    OpenAPIRouteSchema,
+    RequestBody} from "@cloudflare/itty-router-openapi";
+import { CharactersArrSchema, TeamsSchema, bodyRequestTeamsTupleSchema } from "../../lib/schemas";
 import z from 'zod';
 
 export class getFighters extends OpenAPIRoute {
@@ -20,7 +17,7 @@ export class getFighters extends OpenAPIRoute {
                 schema: TeamsSchema
             },
             "489": {
-                description: "Characters where not even",
+                description: "Teams length where not even",
                 schema: {
                     success: Boolean,
                     error: String,
@@ -30,39 +27,48 @@ export class getFighters extends OpenAPIRoute {
     };
     async handle(
         request: Request,
-        data: DataOf<typeof getFighters.schema>
-    ) {
-        const json = request.json()
-
-        const chars = bodyRequestTeamsTupleSchema(CharactersArrSchema)
-            .parse(json);
-        const teamAChars = CharactersArrSchema.parse(chars[0])
-        const teamBChars = CharactersArrSchema.parse(chars[1])
-
-        
-        const teamA : FightersArr = teamAChars.map((character : Character) : Fighter  => {
-            const stamina = Math.floor(Math.random() * 10)
-            const hp = getHP(character.stats, stamina)
-            return {
-                character,
-                stamina,
-                hp,
-            }
-        })
-        const teamB : FightersArr = teamBChars.map((character : Character) : Fighter  => {
-            const stamina = Math.floor(Math.random() * 10)
-            const hp = getHP(character.stats, stamina)
-            return {
-                character,
-                stamina,
-                hp,
-            }
-        })
-        
-        return {
-            0: teamA,
-            1: teamB
+        data: DataOf<typeof getFighters.schema> & {
+            body: z.TypeOf<ReturnType<typeof bodyRequestTeamsTupleSchema>>
         }
+    ) {
+        return data.body
+
+        // const json = await request.json()
+        // const chars = bodyRequestTeamsTupleSchema(CharactersArrSchema)
+        //     .parse(json);
+        // const teamAChars = CharactersArrSchema.parse(chars[0])
+        // const teamBChars = CharactersArrSchema.parse(chars[1])
+
+        // if(teamAChars.length !== teamBChars.length){
+        //     return {
+        //         success: false,
+        //         error: 'Teams length was not even'
+        //     }
+        // }
+
+        // const teamA : FightersArr = teamAChars.map((character : Character) : Fighter  => {
+        //     const stamina = Math.floor(Math.random() * 10)
+        //     const hp = getHP(character.stats, stamina)
+        //     return {
+        //         character,
+        //         stamina,
+        //         hp,
+        //     }
+        // })
+        // const teamB : FightersArr = teamBChars.map((character : Character) : Fighter  => {
+        //     const stamina = Math.floor(Math.random() * 10)
+        //     const hp = getHP(character.stats, stamina)
+        //     return {
+        //         character,
+        //         stamina,
+        //         hp,
+        //     }
+        // })
+        return {}
+        // return {
+        //     0: teamA,
+        //     1: teamB
+        // }
     }
 }
 

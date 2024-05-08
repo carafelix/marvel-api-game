@@ -11,7 +11,7 @@ import characters from '../../lib/json/characters.json' assert {type: 'json'}
 export class getOneFighter extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
         tags: ["Fighter"],
-        summary: "Get a single Character by id",
+        summary: "Initialize a single fighter by id",
         parameters: {
             id: Path(new Str(), {
                 description: "ID of the desired character initiate as a fighter"
@@ -35,8 +35,6 @@ export class getOneFighter extends OpenAPIRoute {
         request: Request,
         data: DataOf<typeof getOneFighter.schema>
     ) {
-        const charactersCopy = characters.slice()
-
         const { id } = data.params
         const character = characters.find(({ id: charID }) => +id === +charID)
 

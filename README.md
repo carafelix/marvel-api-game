@@ -16,7 +16,7 @@
     - PlayRound takes a BattleField and returns the new State of the BattleField.
 
 ## should do
-- add a same origin .request method (like Hono), to call inner endpoints like fetch but internally, to remove some code repetition.
+- add a same origin .request method (like Hono), to call inner endpoints like fetch but internally, to remove some code repetition. I think this is possible in itty router using [CORS](https://itty.dev/itty-router/cors). That would make indeed a request, instead of bypassing it, but would make code concise.
 
 ## Test
 - run ```bun test```

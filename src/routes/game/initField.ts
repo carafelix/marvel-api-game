@@ -33,7 +33,8 @@ export class initField extends OpenAPIRoute {
         request: Request,
         data: DataOf<typeof initField.schema>
     ) {
-        console.log(request.json())
+        const v = await request.json()
+        console.log(v)
         return {
             success: true,
         };
