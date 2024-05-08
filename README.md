@@ -14,7 +14,17 @@
     - getCharacters returns a list of characters
     - getFighters will take that list of characters and return a tuple of 2 teams
     - InitField takes that tuple and add's them into a BattleField
-    - PlayRound takes a BattleField and returns the new State of the BattleField.
+    - PlayRound takes a BattleField and returns the new State of the BattleField. can be done recursively feeding it's own output for advancing the battle until finished.
+
+In reality the BattleField state should not be handled inside the client, besides it's schema being validated in the server, the server should store the state and receive different actions, also post request, and check if that action at that moment is valid, e.g: client selects to attack a character, check if that player is in turn and if that action is valid, updates the battlefield state, sends the update to the client.   
+
+## Why and why's?
+- Found it fun enough. 
+- Why the chain is split like that? I taught to be necessary for hooking a front end with the following flow:
+    - user request a character list
+    - user selects it's desired's characters
+    - fight starts
+- initField and getFighters could be merged inside one single endpoint, but I preferred this way to test and learn the schema validations process.
 
 ## should do
 - add a same origin .request method (like Hono), to call inner endpoints like fetch but internally, to remove some code repetition. I think this is possible in itty router using [CORS](https://itty.dev/itty-router/cors). That would make indeed a request, instead of bypassing it, but would make code concise.
