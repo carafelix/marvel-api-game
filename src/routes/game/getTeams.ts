@@ -7,14 +7,14 @@ import { Character, CharactersArrSchema, Fighter, FightersArr, TeamsSchema } fro
 import z from 'zod';
 import { getHP } from "lib/getHP";
 
-export class getFighters extends OpenAPIRoute {
+export class getTeams extends OpenAPIRoute {
     static schema: OpenAPIRouteSchema = {
-        tags: ["Fighter"],
+        tags: ["Game"],
         summary: "Get two teams of Fighters with HP and Stamina initialized",
         requestBody: CharactersArrSchema.min(2),
         responses: {
             "200": {
-                description: "Return a list of characters with Actual Stamina initialized",
+                description: "Return two teams of characters with Actual Stamina initialized",
                 schema: TeamsSchema
             },
             "489": {
@@ -28,7 +28,7 @@ export class getFighters extends OpenAPIRoute {
     };
     async handle(
         request: Request,
-        data: DataOf<typeof getFighters.schema> & {
+        data: DataOf<typeof getTeams.schema> & {
             body: z.TypeOf<typeof CharactersArrSchema>
         }
     ) {
@@ -39,7 +39,8 @@ export class getFighters extends OpenAPIRoute {
         if(teamAChars.length !== teamBChars.length){
             return {
                 success: false,
-                error: 'Teams length was not even'
+                error: 'Teams length was not even',
+                status: 489
             }
         }
 

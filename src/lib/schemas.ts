@@ -22,7 +22,7 @@ export const CharacterSchema = z.object({
   thumbnail: z.string().url(),
   sprites: z.array(SpriteSchema),
   stats: z.object(StatsSchema.shape),
-  type: z.enum(['hero', 'villain'])
+  type: z.enum(['hero', 'villain']).default('villain')
 })
 export const CharactersArrSchema = z.array(CharacterSchema)
 
@@ -33,20 +33,15 @@ export const FighterSchema = z.object({
 })
 
 export const FightersArrSchema = z.array(FighterSchema)
-export const FightersArrTupleSchema = z.array(FightersArrSchema).min(2).max(2)
+export const TeamsSchema = z.array(FightersArrSchema).min(2).max(2)
 
-
-export const TeamsSchema = z.object({
-  0: FightersArrSchema,
-  1: FightersArrSchema
-})
 
 export const FieldStateSchema = z.object({
-  output: TeamsSchema,
-  log: z.array(z.string()),
   done: z.boolean(),
-  teamInTurn: z.number().min(0).max(1),
-  round: z.number().min(0)
+  winner: z.string().optional(),
+  teams: TeamsSchema,
+  log: z.array(z.string()),
+  round: z.number().min(0).default(0)
 })
 
 export type CharactersArr = z.TypeOf<typeof CharactersArrSchema>;

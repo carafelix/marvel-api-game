@@ -9,10 +9,11 @@
 
 ## Features
 - Server schema validation, returns error
-- Rate limit (set to 30 request every 60 seconds for all endpoints, just for good measure)
+- Rate limit (set to 30 request per minute for all endpoints, just for good measure)
 - It is possible to hook a front-end chaining the api methods
-    - getFighters returns a list of characters
-    - InitField takes a list of characters and add's them into a BattleField
+    - getCharacters returns a list of characters
+    - getFighters will take that list of characters and return a tuple of 2 teams
+    - InitField takes that tuple and add's them into a BattleField
     - PlayRound takes a BattleField and returns the new State of the BattleField.
 
 ## should do

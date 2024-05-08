@@ -2,7 +2,7 @@ import { OpenAPIRouter } from "@cloudflare/itty-router-openapi";
 import {
 	getOneCharacter,
 	getCharacters,
-	getFighters,
+	getTeams,
 	getOneFighter,
 	playRound,
 	fullGame,
@@ -17,9 +17,9 @@ const router = OpenAPIRouter({
 router.get("/api/characters", getCharacters);
 router.get("/api/characters/:characterName", getOneCharacter);
 
-router.post("/api/fighters", getFighters)
 router.get("/api/fighters/:id", getOneFighter)
 
+router.post("/api/game/getTeams", getTeams)
 router.post("/api/game/initField",  initField)
 router.post("/api/game/playRound", playRound ) // TODO
 

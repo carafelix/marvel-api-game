@@ -59,7 +59,7 @@ export class FullGameFromScratch extends OpenAPIRoute {
             const teamInTurnName = teamInTurn === teamOne ? 'A' : 'B'
 
             const herosInTeam = teamInTurn.filter((fighter) => {
-                fighter.character.type = 'hero'
+                fighter.character.type === 'hero'
             }).length
             const teamAlignment = herosInTeam > teamInTurn.length / 2 ? 'hero' :
                 herosInTeam === teamInTurn.length / 2 ? 'neutral' : 'villain'
