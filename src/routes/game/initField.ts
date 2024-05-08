@@ -27,7 +27,7 @@ export class initField extends OpenAPIRoute {
     ) {
         return {
             teams: [data.body[0],data.body[1]],
-            log: ['Lets the battle begin'],
+            log: [['Lets the battle begin']],
             done: false,
             round: 0
           }

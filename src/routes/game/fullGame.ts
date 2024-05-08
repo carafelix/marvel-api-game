@@ -43,7 +43,7 @@ export class FullGameFromScratch extends OpenAPIRoute {
         })
         const fighters = FightersArrSchema.parse(fightersResult)
 
-        const log: string[] = []
+        const log: string[][] = []
         const teamOne = fighters.slice(0, 5)
         const teamTwo = fighters.slice(5, 10)
 
@@ -103,12 +103,11 @@ export class FullGameFromScratch extends OpenAPIRoute {
                 oppositeTeam.shift()
             }
             // log could be an array uh
-            log.push(`In turn ${turnCount}, team ${teamInTurnName}:
-        ${currFighter.character.name} attacked ${attackedEnemy.character.name}
-        inflicting ${currAttack.toFixed(2)} damage!
-        Leaving him with ${attackedEnemy.hp.toFixed(1)} HP!
-        ${attackedEnemy.hp < 0 ? '\n ¡' + attackedEnemy.character.name + ' died!' : ''}`
-            )
+            log.push([`In turn ${turnCount}, team ${teamInTurnName}:`,
+            `${currFighter.character.name} attacked ${attackedEnemy.character.name}`,
+            `inflicting ${currAttack.toFixed(2)} damage!`,
+            `Leaving him with ${attackedEnemy.hp.toFixed(1)} HP!`,
+            `${attackedEnemy.hp < 0 ? '¡' + attackedEnemy.character.name + ' died!' : ''}`])
             turnCount++
         }
         const winner = teamOne.length ? 'team A' : 'team B'

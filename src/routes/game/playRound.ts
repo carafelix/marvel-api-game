@@ -55,7 +55,6 @@ export class playRound extends OpenAPIRoute {
         const rand = (n: number) => Math.floor(Math.random() * n);
         const currFighter = teamInTurn[rand(teamInTurn.length)]
         const initialStats = {...currFighter.character.stats}
-        console.log(currFighter.character.type)
         // should be a switch
         const FB = (
             teamAlignment === 'neutral' ?
@@ -92,18 +91,19 @@ export class playRound extends OpenAPIRoute {
         }
 
         battlefield.log
-            .push(`In turn ${battlefield.round}, team ${teamInTurnName}:
-            ${currFighter.character.name} attacked ${attackedEnemy.character.name}
-            inflicting ${currAttack.toFixed(2)} damage!
-            Leaving him with ${attackedEnemy.hp.toFixed(1)} HP!
-            ${attackedEnemy.hp < 0 ? '\n ¡' + attackedEnemy.character.name + ' died!' : ''}`
-            )
+        .push([`In turn ${battlefield.round}, team ${teamInTurnName}:`,
+                `${currFighter.character.name} attacked ${attackedEnemy.character.name}`,
+                `inflicting ${currAttack.toFixed(2)} damage!`,
+                `Leaving him with ${attackedEnemy.hp.toFixed(1)} HP!`,
+                `${attackedEnemy.hp < 0 ? '¡' + attackedEnemy.character.name + ' died!' : ''}`])
+        
         battlefield.round += 1
 
         if (!oppositeTeam.length) {
+            console.log(oppositeTeam)
             battlefield.winner = teamInTurnName
             battlefield.done = true
-            battlefield.log.push(`Victory for team: ${teamInTurnName}`)
+            battlefield.log.push([`Victory for team: ${teamInTurnName}`])
         }
         currFighter.character.stats = initialStats
 
